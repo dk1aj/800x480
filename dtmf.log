@@ -1,0 +1,182 @@
+[30-04-2025 20:51:40] Test: Logeintrag
+[30-04-2025 20:52:05] Button gedrückt: 1
+[30-04-2025 20:52:05] DTMF gesendet: 1
+[30-04-2025 20:52:08] Button gedrückt: 5
+[30-04-2025 20:52:08] DTMF gesendet: 5
+[30-04-2025 20:52:09] Button gedrückt: #
+[30-04-2025 20:52:09] DTMF gesendet: #
+[30-04-2025 20:53:18] Button gedrückt: 7
+[30-04-2025 20:53:18] DTMF gesendet: 7
+[30-04-2025 20:53:18] Button gedrückt: 7
+[30-04-2025 20:53:18] DTMF gesendet: 7
+[30-04-2025 20:53:19] Button gedrückt: 7
+[30-04-2025 20:53:19] DTMF gesendet: 7
+[30-04-2025 20:53:21] Button gedrückt: 8
+[30-04-2025 20:53:21] DTMF gesendet: 8
+[30-04-2025 20:53:21] Button gedrückt: 8
+[30-04-2025 20:53:21] DTMF gesendet: 8
+[30-04-2025 20:53:21] Button gedrückt: 8
+[30-04-2025 20:53:21] DTMF gesendet: 8
+[30-04-2025 20:53:22] Button gedrückt: 8
+[30-04-2025 20:53:22] DTMF gesendet: 8
+[30-04-2025 20:53:22] Button gedrückt: 8
+[30-04-2025 20:53:22] DTMF gesendet: 8
+[30-04-2025 20:53:37] Button gedrückt: 4
+[30-04-2025 20:53:37] DTMF gesendet: 4
+[30-04-2025 20:53:37] Button gedrückt: 4
+[30-04-2025 20:53:37] DTMF gesendet: 4
+[30-04-2025 20:53:37] Button gedrückt: 4
+[30-04-2025 20:53:37] DTMF gesendet: 4
+[30-04-2025 20:53:38] Button gedrückt: 4
+[30-04-2025 20:53:38] DTMF gesendet: 4
+[30-04-2025 20:53:39] Button gedrückt: 5
+[30-04-2025 20:53:39] DTMF gesendet: 5
+[30-04-2025 20:53:39] Button gedrückt: 5
+[30-04-2025 20:53:39] DTMF gesendet: 5
+[30-04-2025 20:53:39] Button gedrückt: 5
+[30-04-2025 20:53:39] DTMF gesendet: 5
+[30-04-2025 20:53:40] Button gedrückt: 6
+[30-04-2025 20:53:40] DTMF gesendet: 6
+[30-04-2025 20:53:41] Button gedrückt: 6
+[30-04-2025 20:53:41] DTMF gesendet: 6
+[30-04-2025 20:53:41] Button gedrückt: 6
+[30-04-2025 20:53:41] DTMF gesendet: 6
+[30-04-2025 20:53:42] Button gedrückt: 7
+[30-04-2025 20:53:42] DTMF gesendet: 7
+[30-04-2025 20:53:42] Button gedrückt: 7
+[30-04-2025 20:53:42] DTMF gesendet: 7
+[30-04-2025 20:53:42] Button gedrückt: 7
+[30-04-2025 20:53:42] DTMF gesendet: 7
+[30-04-2025 20:53:42] Button gedrückt: 7
+[30-04-2025 20:53:42] DTMF gesendet: 7
+[30-04-2025 20:53:44] DTMF-Display zurückgesetzt durch CLR
+[30-04-2025 21:03:17] Button gedrückt: 7
+[30-04-2025 21:03:17] Fehler: /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:16:03] Button gedrückt: 5
+[30-04-2025 21:16:03] Fehler: /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:16:12] DTMF-Display zurückgesetzt durch CLR
+[30-04-2025 21:21:53] Button gedrückt: 5
+[30-04-2025 21:21:53] ❌ /tmp/dtmf_svx existiert nicht (PTY-Symlink nicht sichtbar?)
+[30-04-2025 21:21:56] Button gedrückt: 6
+[30-04-2025 21:21:56] ❌ /tmp/dtmf_svx existiert nicht (PTY-Symlink nicht sichtbar?)
+[30-04-2025 21:28:29] DTMF-Display zurückgesetzt durch CLR
+[30-04-2025 21:28:31] Button gedrückt: 5
+[30-04-2025 21:28:31] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:32] Button gedrückt: 5
+[30-04-2025 21:28:32] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:32] Button gedrückt: 5
+[30-04-2025 21:28:32] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:32] Button gedrückt: 5
+[30-04-2025 21:28:32] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:33] Button gedrückt: 5
+[30-04-2025 21:28:33] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:33] Button gedrückt: 5
+[30-04-2025 21:28:33] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:33] Button gedrückt: 5
+[30-04-2025 21:28:33] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:28:36] DTMF-Display zurückgesetzt durch CLR
+[30-04-2025 21:34:29] Taste gedrückt: 9
+[30-04-2025 21:34:30] Taste gedrückt: 1
+[30-04-2025 21:34:30] Taste gedrückt: 2
+[30-04-2025 21:34:31] Taste gedrückt: 2
+[30-04-2025 21:34:31] Taste gedrückt: 6
+[30-04-2025 21:34:35] Taste gedrückt: #
+[30-04-2025 21:34:35] ❌ /tmp/dtmf_svx existiert nicht
+[30-04-2025 21:39:07] Taste gedrückt: 4
+[30-04-2025 21:39:07] ❌ Fehler beim Senden von '4' (2)
+[30-04-2025 21:39:17] Taste gedrückt: 8
+[30-04-2025 21:39:17] ❌ Fehler beim Senden von '8' (2)
+[30-04-2025 21:49:29] Taste gedrückt: 5
+[30-04-2025 21:49:29] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:29] Taste gedrückt: 5
+[30-04-2025 21:49:29] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:29] Taste gedrückt: 5
+[30-04-2025 21:49:29] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:30] Taste gedrückt: 5
+[30-04-2025 21:49:30] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:30] Taste gedrückt: 5
+[30-04-2025 21:49:30] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:30] Taste gedrückt: 5
+[30-04-2025 21:49:30] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:30] Taste gedrückt: 5
+[30-04-2025 21:49:30] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:31] Taste gedrückt: 5
+[30-04-2025 21:49:31] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:31] Taste gedrückt: 5
+[30-04-2025 21:49:31] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:31] Taste gedrückt: 5
+[30-04-2025 21:49:31] ❌ Fehler beim Senden von '5' (2)
+[30-04-2025 21:49:33] Taste gedrückt: #
+[30-04-2025 21:49:33] ❌ Fehler beim Senden von '#' (2)
+[30-04-2025 21:51:26] Taste gedrückt: 3
+[TEST] whoami = svxlink
+[TEST] CMD = echo "3" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[30-04-2025 21:51:26] Taste gedrückt: 3
+[TEST] whoami = svxlink
+[TEST] CMD = echo "3" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[30-04-2025 21:51:26] Taste gedrückt: 3
+[TEST] whoami = svxlink
+[TEST] CMD = echo "3" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[30-04-2025 21:51:27] Taste gedrückt: 3
+[TEST] whoami = svxlink
+[TEST] CMD = echo "3" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[30-04-2025 21:51:27] Taste gedrückt: 3
+[TEST] whoami = svxlink
+[TEST] CMD = echo "3" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[01-05-2025 15:36:49] Taste gedrückt: 9
+[TEST] whoami = svxlink
+[TEST] CMD = echo "9" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[01-05-2025 15:36:51] Taste gedrückt: 1
+[TEST] whoami = svxlink
+[TEST] CMD = echo "1" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[01-05-2025 15:36:52] Taste gedrückt: 2
+[TEST] whoami = svxlink
+[TEST] CMD = echo "2" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[01-05-2025 15:36:53] Taste gedrückt: 0
+[TEST] whoami = svxlink
+[TEST] CMD = echo "0" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[01-05-2025 15:36:57] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:40] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:40] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:40] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:41] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:42] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:42] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:42] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[02-05-2025 10:28:43] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet

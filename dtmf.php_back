@@ -1,0 +1,166 @@
+<?php
+session_start();
+
+// Initialisiere DTMF-Display
+if (!isset($_SESSION['dtmf_display'])) 
+{
+    $_SESSION['dtmf_display'] = '';
+}
+
+$redirectAfterHash = false;
+
+// Funktion zum sicheren Senden von DTMF an /tmp/dtmf_svx
+function send_dtmf($dtmf_char) {
+  $pty_path = '/tmp/dtmf_svx';
+  
+  // Prüfen, ob die Datei existiert
+  if (file_exists($pty_path)) {
+      // Den DTMF-Code direkt in die Datei schreiben
+      file_put_contents($pty_path, $dtmf_char);
+      return true;
+  } else {
+      error_log("Fehler: $pty_path existiert nicht");
+      return false;
+  }
+}
+
+// Eingaben vom Keypad verarbeiten
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $map = [
+        'button20' => '0',
+        'button21' => '1',
+        'button22' => '2',
+        'button23' => '3',
+        'button24' => '4',
+        'button25' => '5',
+        'button26' => '6',
+        'button27' => '7',
+        'button28' => '8',
+        'button29' => '9',
+        'button30' => '*',
+        'button31' => '#'
+    ];
+
+    foreach ($map as $key => $value) {
+        if (isset($_POST[$key])) {
+            send_dtmf($value);
+            if ($value === '#') {
+                $_SESSION['dtmf_display'] = '';
+                $redirectAfterHash = true;
+            } else {
+                $_SESSION['dtmf_display'] .= $value;
+            }
+        }
+    }
+
+    if (isset($_POST['buttonCLR'])) {
+        $_SESSION['dtmf_display'] = '';
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="5;url=index.php">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+      padding-top: 10px;
+      position: relative;
+    }
+    .lcd {
+      background-color: #222;
+      border: 2px solid #0f0;
+      border-radius: 6px;
+      height: 72px;
+      line-height: 72px;
+      font-size: 32px;
+      font-family: monospace;
+      margin: 10px auto 20px auto;
+      width: 490px;
+      transition: all 0.2s ease-in-out;
+    }
+    .dtmf-button, .clr-button {
+      width: 75px;
+      height: 75px;
+      font-size: 22px;
+      margin: 2px;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.1s ease;
+    }
+    .dtmf-button {
+      background: linear-gradient(to bottom, #337ab7 0%, #265a88 100%);
+      color: white;
+    }
+    button[name="button30"], button[name="button31"] {
+      background: linear-gradient(to bottom, #ff7f50, #ff4500);
+    }
+    .dtmf-button:active {
+      background: #00ff00 !important;
+      color: black !important;
+    }
+    .clr-button:active {
+      background: #ffff00 !important;
+      color: black !important;
+    }
+    .clr-button {
+      background: linear-gradient(to bottom, #d9534f 0%, #c9302c 100%);
+      color: white;
+      position: absolute;
+      top: 72%;
+      left: calc(50% + 140px);
+    }
+    .keypad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 90px);
+      grid-gap: 4px;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+    }
+  </style>
+
+  <?php if ($redirectAfterHash): ?>
+    <script>window.location.href = 'index.php';</script>
+  <?php else: ?>
+    <script>
+      setTimeout(() => { window.location.href = 'index.php'; }, 5000);
+    </script>
+  <?php endif; ?>
+</head>
+
+<body>
+  <div class="lcd">
+    <?php echo str_pad(substr($_SESSION['dtmf_display'], -16), 16, ' ', STR_PAD_LEFT); ?>
+  </div>
+
+  <form method="post">
+    <div class="keypad-grid">
+      <button class="dtmf-button" type="submit" name="button21">1</button>
+      <button class="dtmf-button" type="submit" name="button22">2</button>
+      <button class="dtmf-button" type="submit" name="button23">3</button>
+      <button class="dtmf-button" type="submit" name="button24">4</button>
+      <button class="dtmf-button" type="submit" name="button25">5</button>
+      <button class="dtmf-button" type="submit" name="button26">6</button>
+      <button class="dtmf-button" type="submit" name="button27">7</button>
+      <button class="dtmf-button" type="submit" name="button28">8</button>
+      <button class="dtmf-button" type="submit" name="button29">9</button>
+      <button class="dtmf-button" type="submit" name="button30">*</button>
+      <button class="dtmf-button" type="submit" name="button20">0</button>
+      <button class="dtmf-button" type="submit" name="button31">#</button>
+    </div>
+    <button class="clr-button" type="submit" name="buttonCLR">CLR</button>
+  </form>
+</body>
+</html>

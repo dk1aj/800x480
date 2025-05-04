@@ -1,0 +1,90 @@
+/* Standard-Button-Stil (letzte Definition überschreibt vorherige) */
+.touch-button {
+    width: 100%;
+    max-width: 200px;
+    height: 60px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(to bottom, rgb(0, 17, 255), rgb(0, 255, 234));
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    touch-action: manipulation;
+    margin: 4px;
+   }
+   
+   .touch-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+   }
+   
+   .touch-button:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+   }
+   
+   /* Zehn Farbvarianten */
+   .touch-button1 {
+    background: linear-gradient(to bottom, #ff5f6d, #ffc371); /* Rot -> Gelb */
+   }
+   
+   .touch-button2 {
+    background: linear-gradient(to bottom, #36d1dc, #5b86e5); /* Türkis -> Blau */
+   }
+   
+   .touch-button3 {
+    background: linear-gradient(to bottom, #f7971e, #ffd200); /* Orange -> Gelb */
+   }
+   
+   .touch-button4 {
+    background: linear-gradient(to bottom, #00c9ff, #92fe9d); /* Blau -> Grün */
+   }
+   
+   .touch-button5 {
+    background: linear-gradient(to bottom, #c471f5, #fa71cd); /* Lila -> Rosa */
+   }
+   
+   .touch-button6 {
+    background: linear-gradient(to bottom, #43cea2, #185a9d); /* Grün -> Blau */
+   }
+   
+   .touch-button7 {
+    background: linear-gradient(to bottom, #f953c6, #b91d73); /* Pink -> Dunkelrosa */
+   }
+   
+   .touch-button8 {
+    background: linear-gradient(to bottom, #00b09b, #96c93d); /* Türkis -> Limette */
+   }
+   
+   .touch-button9 {
+    background: linear-gradient(to bottom, #ff9966, #ff5e62); /* Orange -> Rot */
+   }
+   
+   .touch-button10 {
+    background: linear-gradient(to bottom, #7f00ff, #e100ff); /* Violett -> Pink */
+   }
+   .button-wide {
+    width: 450px;
+    height: 50px;
+    font-size: 24px;
+    }
+    /* --------------------- */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+        padding: 40px;
+    }
+        
+       
+       .centered-button {
+        width: 450px;
+        height: 50px;
+        font-size: 24px;
+       }
+       
+    

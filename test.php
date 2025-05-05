@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=800, height=400">
+    <meta http-equiv="refresh" content="3;url=index.php">
   <title>Touch UI 800x400</title>
   <style>
     * {

@@ -480,41 +480,57 @@ input[type=text] {
 
 .node-talk {
   display: inline-block;
-  width: 600px;
+  width: 740px;
   height: 300px;
   padding: 2px;
-  border: 2px solid #08a103;
+  border: 10px solid #08a103;
   border-radius: 12px;
   margin: 3px 5px;
   text-align: center;
   font-weight: 700;
   font-size: 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #0c0c0c, #1e1e1e);
+  background: linear-gradient(to bottom,rgb(0, 0, 0),rgb(59, 59, 59));
   color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 255, 50, 0.4);
+  box-shadow: 0 4px 10px rgba(47, 247, 74, 0.65);
   touch-action: manipulation;
 }
 
 .node-talk1 {
   display: inline-block;
-  width: 600px;
+  width: 740px;
   height: 300px;
   padding: 2px;
-  border: 2px solid #ff4444;
+  border: 2px solid #ff5733 ;
   border-radius: 12px;
   margin: 3px 5px;
   text-align: center;
   font-weight: 700;
   font-size: 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #2a0000, #400000);
+  background: linear-gradient(to bottom,rgb(0, 0, 0),rgb(136, 2, 2));
   color: #ffffff;
-  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+  /* box-shadow: 0 40px 10px #ff5733; */
   touch-action: manipulation;
 }
 
+
 .node-talk2 {
+    display: inline-block;
+    width: 740px;
+    height: 300px;
+    padding: 2px;
+    // border: 1px solid #FF5733;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 3px 5px;
+    text-align: center;
+    font-weight:600;
+    // font-family: "Lucidia Console",Monaco,monospace;
+    background: linear-gradient(to bottom, transparent 0%,  #a80202 0%), linear-gradient(#ff0000, #EEE);
+}
+
+.node-talk3 {
   display: inline-block;
   width: 740px;
   height: 300px;
@@ -535,8 +551,8 @@ input[type=text] {
 
 .node-info {
     display: inline-block;
-    width: 440px;
-    height: 470px;
+    width: 740px;
+    height: 300px;
     padding: 2px;
     // border: 1px solid #FF5733;
     border: 1px solid #000;

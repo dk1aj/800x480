@@ -17,12 +17,12 @@ foreach ($_POST as $key => $val) {
     }
     echo "<meta http-equiv='refresh' content='0'>";
     exit;
-  }
+  } 
 }
 ?>
 
 <form method="post">
-  <div class="center-container">
+  <div class="left-container">
     <?php
     // Liste aller Keys, die du nutzen möchtest
     $buttonKeys = [

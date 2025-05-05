@@ -1,5 +1,5 @@
 <?php
-$progname = basename($_SERVER['SCRIPT_FILENAME'], ".php");
+$progname = basename($_SERVER['SCRIPT_FILENAME'], '.php');
 include_once 'include/config.php';
 include_once 'include/tools.php';
 ?>
@@ -9,58 +9,33 @@ include_once 'include/tools.php';
   <meta charset="utf-8" />
   <meta name="author" content="DK1AJ" />
   <meta http-equiv="refresh" content="5;url=index.php" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
-
+  <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png" />
   <title>SVXLink Dashboard</title>
 
-  <?php include_once "include/browserdetect.php"; ?>
+  <?php include_once 'include/browserdetect.php'; ?>
 
-  <script src="scripts/jquery.min.js"></script>
-  <script src="scripts/functions.js"></script>
-  <script src="scripts/pcm-player.min.js"></script>
-  <script>
-    $.ajaxSetup({ cache: false });
-  </script>
   <link rel="stylesheet" href="css/featherlight.css" />
-  <script src="scripts/featherlight.js" charset="utf-8"></script>
-
   <style>
     body {
       margin: 0;
       padding: 0;
       background-color: #000;
-      font: 11pt arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font: 16px Arial, sans-serif;
+      color: #fff;
     }
 
     .content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .wrapper {
-      max-width: 790px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .back-button-container {
-      text-align: center;
-      margin: 10px 0;
+      padding: 10px;
     }
 
     .center-container {
       display: flex;
       flex-wrap: wrap;
+      /* justify-content: flex-start; */
       justify-content: center;
       gap: 8px;
-      padding: 10px;
     }
 
     .touch-button {
@@ -70,6 +45,7 @@ include_once 'include/tools.php';
       font-size: 22px;
       font-weight: 600;
       color: #ffffff;
+      background-color: #007bff;
       border: none;
       border-radius: 18px;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
@@ -89,24 +65,73 @@ include_once 'include/tools.php';
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
-    .touch-button8 { background: linear-gradient(to bottom, #00b09b, #96c93d); }
+    .touch-button8 {
+      background: linear-gradient(to bottom, #00b09b, #96c93d);
+    }
+
+    .back-button-container {
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
-  <div class="content">
-    <div class="wrapper">
-      <?php
-        if (MENUBUTTON == "BOTTOM") {
-          include_once __DIR__ . "/include/buttons_tg.php";
-        }
-      ?>
-    </div>
-  </div>
 
-  <div class="back-button-container">
-    <a href="index.php">
-      <button class="touch-button touch-button8">BACK</button>
-    </a>
-  </div>
+<?php
+// DTMF-Ausführung
+foreach ($_POST as $key => $val) {
+  if (preg_match('/^button(\d+)$/', $key, $matches)) {
+    $btnNum = $matches[1];
+    $constName = 'KEY' . $btnNum;
+    if (defined($constName)) {
+      $cmd = constant($constName)[1];
+      if (!empty($cmd)) {
+        if ($btnNum == 8) {
+          exec($cmd, $output);
+        } else {
+          exec("echo '$cmd' > /tmp/dtmf_svx", $output);
+        }
+      }
+    }
+    echo "<meta http-equiv='refresh' content='0'>";
+    exit;
+  }
+}
+?>
+
+<div class="content">
+  <form method="post">
+    <div class="center-container">
+      <?php
+      $buttonKeys = [111, 112, 113, 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16];
+      foreach ($buttonKeys as $i) {
+        $keyVar = 'KEY' . $i;
+        if (defined($keyVar)) {
+          $data = constant($keyVar);
+          $label = $data[0] ?? "KEY$i";
+          $cssClass = $data[2] ?? "touch-button";
+          echo '<button class="touch-button ' . htmlspecialchars($cssClass) . '" name="button' . $i . '">' . htmlspecialchars($label) . '</button>' . PHP_EOL;
+        }
+      }
+      ?>
+
+      <div class="back-button-container">
+        <a href="index.php">
+          <button type="button" class="touch-button touch-button8">BACK</button>
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/functions.js"></script>
+<script src="scripts/pcm-player.min.js"></script>
+<script src="scripts/featherlight.js" charset="utf-8"></script>
+<script>
+  $.ajaxSetup({ cache: false });
+</script>
+
 </body>
 </html>

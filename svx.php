@@ -30,7 +30,7 @@ include_once 'include/tools.php';
     body {
       max-width: 790px;
       background-color: #000;
-      font: 11pt Arial, sans-serif;
+      font: 11pt Arial, sans-serif; 
       margin: 0 auto;
       text-align: center;
     }

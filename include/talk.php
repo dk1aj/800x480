@@ -167,7 +167,9 @@ if ($file) {
 
             // Einstellbare Fontgrößen
             $fontSizeTGName = '48px'; // z. B. aus Config
-            $fontSizeNet = '58px';    // z. B. aus Config
+            $fontSizeNet = '38px';    // z. B. aus Config
+            $fontSizeTGNR = '38px';    // z. B. aus Config
+            $fontSizeFMNET = '48px';    // z. B. aus Config
 
             $nameFontSize = (strlen($tgname) > 16) ? '36px' : $fontSizeTGName;
 
@@ -177,9 +179,9 @@ if ($file) {
             echo '<span style="color: green; font-size: 48px;">Last Talker: ' . htmlspecialchars($lastKnownCallsign) . '</span><br />';
             echo '</div>';
 
-            echo '<span style="color: blue; font-size: ' . $fontSizeNet . ';">last TG#' . htmlspecialchars($tgselect) . '</span>&nbsp;&nbsp;';
+            echo '<span style="color: blue; font-size: ' . $fontSizeTGNR . ';">last TG#' . htmlspecialchars($tgselect) . '</span>&nbsp;&nbsp;';
             echo '<span style="color: white; font-size: ' . $fontSizeNet . ';">' . htmlspecialchars($tgname) . '</span><br />';
-            echo '<span style="color: cyan; font-size: ' . $fontSizeNet . ';">' . htmlspecialchars($fmnet) . '</span>';
+            echo '<span style="color: cyan; font-size: ' . $fontSizeFMNET . ';">' . htmlspecialchars($fmnet) . '</span>';
         } else {
             // Nur Uhrzeit und Netzname anzeigen
             $currentTime = date('H:i:s');

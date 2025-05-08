@@ -6,33 +6,51 @@
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="refresh" content="2;url=index.php"> 
   <style>
-    body {
+    html, body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
       background-color: #000;
       font: 11pt Arial, sans-serif;
-      overflow-x: hidden;
+      overflow: hidden;
+      width: 800px;
+      height: 480px;
+      position: relative;
     }
 
     .container {
-      text-align: left;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, auto);
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 20px;
     }
 
     button {
-      margin: 8px;
       padding: 14px 20px;
       font-size: 16px;
       font-weight: bold;
       letter-spacing: 0.5px;
       border-radius: 10px;
-      width: 200px;
-      height: 60px;
       color: white;
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
       transition: transform 0.1s ease, box-shadow 0.1s ease;
       touch-action: manipulation;
+      width: 100%;
+      height: 60px;
     }
 
     button:active {
@@ -52,7 +70,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .nav-button {
@@ -60,8 +78,8 @@
     }
 
     .back-button-container {
-      position: fixed;
-      bottom: 15px;
+      position: absolute;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       width: 280px;
@@ -74,40 +92,42 @@
     <?php
     if (isset($_POST['button99'])) {
       shell_exec('sudo /home/pi/pkill-pi.sh');
-      echo '<h1 style="color:#FFFFFF;" data-auto-redirect>CHROME RESTART</h1>';
+      echo '<h1 style="color:#FFFFFF;" data-auto-redirect>Chrome will restart on DSI</h1>';
     }
     if (isset($_POST['button98'])) {
       shell_exec('sudo shutdown now');
-      echo '<h1 style="color:#454545;" data-auto-redirect>Shutdown</h1>';
+      echo '<h1 style="color:#454545;" data-auto-redirect>Raspberry Shutdown</h1>';
     }
     if (isset($_POST['button97'])) {
       shell_exec('sudo reboot');
-      echo '<h1 style="color:#454545;">Reboot</h1>';
+      echo '<h1 style="color:#454545;">Raspberry Reboot</h1>';
     }
     if (isset($_POST['button96'])) {
       shell_exec('sudo systemctl stop svxlink');
-      echo '<h1 style="color:#454545;">SvxLink Stop</h1>';
+      echo '<h1 style="color:red;">The SvxLink service has stopped.<br>SvxLink is no longer running. </h1>';
     }
     if (isset($_POST['button95'])) {
       shell_exec('sudo systemctl restart svxlink');
-      echo '<h1 style="color:#ff4444;" data-auto-redirect>SvxLink Restart</h1>';
+      echo '<h1 style="color:green;" data-auto-redirect> SvxLink service is about to restart</h1>';
     }
     ?>
-    <form method="post">
-      <button class="red" name="button97">RPi reboot</button>
-      <button class="red" name="button98">RPi shutdown</button><br>
-      <button class="orange" name="button96">SvxLink stop</button>
-      <button class="orange" name="button95">SvxLink restart</button>
-      <button class="blue" name="button99">Chrome restart</button>
+    <form method="post" class="button-grid">
+      <button class="red" name="button97">Raspberry<br>reboot</button>
+      <button class="red" name="button98">Raspberry<br>shutdown</button>
+      <button class="green" name="button199">never touch<br>this button</button>
+      <button class="orange" name="button96">SvxLink<br>stop</button>
+      <button class="orange" name="button95">SvxLink<br>restart</button>
+      <button class="blue" name="button99">Chrome<br>restart</button>
+      <div></div><div></div><div></div> <!-- Leere Felder für Rasterausgleich -->
     </form>
 
     <div class="nav-container">
       <div class="nav-button"><a href="reflector.php"><button class="blue">SvxReflector<br>switch</button></a></div>
-      <div class="nav-button"><a href="frn.php"><button class="green">FRN<br>client</button></a></div>
+      <!-- <div class="nav-button"><a href="frn.php"><button class="green">FRN<br>client</button></a></div> -->
       <div class="nav-button"><a href="status.php"><button class="green">Status<br>svxlink</button></a></div>
       <div class="nav-button"><a href="lh.php"><button class="green">Lastheard List</button></a></div>
       <div class="nav-button"><a href="extra.php"><button class="orange">EXTRA SET</button></a></div>
-      <div class="nav-button"><a href="update.php"><button class="purple">UPDATE CALL & TG </button></a></div>
+      <div class="nav-button"><a href="update.php"><button class="purple"> ADD<br>CALL & TG </button></a></div>
     </div>
   </div>
 

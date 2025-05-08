@@ -6,7 +6,7 @@
 error_reporting(0);
 
 // Your callsign
-define("CALLSIGN", "N0CALL");
+define("CALLSIGN", "DK1AJ");
 
 require_once 'parse_svxconf.php';
 // set SVXReflector API URL from svxlink.conf

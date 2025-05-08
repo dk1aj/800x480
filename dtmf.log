@@ -297,3 +297,11 @@
 [TEST] whoami = svxlink
 [TEST] CMD = echo "#" > /tmp/dtmf_svx
 [TEST] shell_exec beendet
+[08-05-2025 19:04:05] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[08-05-2025 19:53:24] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet

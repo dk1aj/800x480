@@ -2,13 +2,13 @@
 $progname = basename($_SERVER['SCRIPT_FILENAME'], ".php");
 include_once 'include/config.php';
 include_once 'include/tools.php';
-include_once 'include/browserdetect.php';   
+include_once 'include/browserdetect.php';    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
- <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
  <title><?= htmlspecialchars($progname) ?></title>
  <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/x-icon">
  <link rel="stylesheet" href="css/style.css">
@@ -17,7 +17,7 @@ include_once 'include/browserdetect.php';
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredoka+One&family=Tourney&family=Oswald&display=swap">
 
  <!-- Font Awesome Icons -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
 
  <!-- Featherlight CSS -->
  <link rel="stylesheet" href="css/featherlight.css">
@@ -50,66 +50,67 @@ include_once 'include/browserdetect.php';
  </script>
 
  <style>
-  html, body {
- width: 800px;
- height: 480px;
- margin: 0;
- padding: 0;
- background-color: #000;
- font: 12pt Arial, sans-serif;
- color: white;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: flex-start;
- overflow: hidden;
-  }
+    html, body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        font: 12pt Arial, sans-serif;
+        color: white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+    }
 
-  .flex-content {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: flex-start;
- width: 100%;
- height: 100%;
- padding-bottom: 50px; /* Platz für Footer */
- overflow: hidden;
-  }
+    .flex-content {
+        width: 800px;
+        height: 480px;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        background-color: black;
+    }
 
-  #sysInfo, #svxref {
- width: 100%;
- text-align: center;
- margin-top: 10px;
- margin-bottom: 10px;
-  }
+    #sysInfo, #svxref {
+        width: 100%;
+        text-align: center;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
 
-  footer {
- position: fixed;
- bottom: 0;
- left: 0;
- width: 100%;
- background-color: #000;
- color: white;
- z-index: 999;
- text-align: center;
- padding: 5px 0;
-  }
+    footer {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background-color: #000;
+        color: white;
+        z-index: 999;
+        text-align: left;
+        padding: 2px 10px;
+        box-sizing: border-box;
+    }
  </style>
 </head>
 
 <body>
  <div class="flex-content">
-  <div id="sysInfo">
+        <div id="sysInfo">
  <?php include 'include/system.php'; ?>
   </div>
 
   <div id="svxref">
  <?php include 'include/talk.php'; ?>
   </div>
+  <footer>
+   <?php include 'include/menu.php'; ?>
+  </footer>
  </div>
-
- <footer>
-  <?php include 'include/menu.php'; ?>
- </footer>
 </body>
 </html>

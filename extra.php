@@ -6,7 +6,7 @@ define('ALLOW_LOGIC_CHANGES', false);
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="DK1AJ">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="refresh" content="5;url=index.php">
   <title>SVXLink Control</title>
   <style>

@@ -39,13 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  <title>SVXLink Steuerung</title>
  <link rel="stylesheet" href="css/button_style_svx.css">
  <style>
-   body {
+   /* body {
      display: flex;
      align-items: center;
      justify-content: center;
      height: 100vh;
      margin: 0;
-   }
+   } */
+
+   body {
+  display: flex;
+  justify-content: center; /* nur horizontale Zentrierung */
+  padding-top: 20px;        /* Abstand zum oberen Rand */
+  margin: 0;
+}
    .center-container {
      display: flex;
      flex-direction: column;

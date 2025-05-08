@@ -9,7 +9,7 @@ include_once 'include/tools.php';
   <meta charset="utf-8" />
   <meta name="author" content="DK1AJ" />
   <meta http-equiv="refresh" content="5;url=index.php" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png" />
   <title>SVXLink Dashboard</title>

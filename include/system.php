@@ -2,7 +2,7 @@
 define('ALLOW_LOGIC_CHANGES', false);
 // $mmdvmActive = trim(shell_exec('systemctl is-active mmdvm')) === 'active';
 $svxlinkActive = trim(shell_exec('systemctl is-active svxlink')) === 'active';
-$version = "v0.0.4";
+$version = "v0.0.6";
 
 $cpuTempHTML = "<td style=\"background: white\">---</td>\n";
 if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
@@ -40,7 +40,9 @@ $bars = getSignalBars($signal);
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SvxPi Lite</title>
+  <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Pixel Vista 25</title>
   <style>
     body {
       max-width: 790px;
@@ -77,7 +79,7 @@ $bars = getSignalBars($signal);
 <body>
   <table style="margin-top:0;">
     <tr>
-      <th style="width: 25%; background: blue;">
+      <th style="width: 20%; background: blue;">
         <div style="display: flex; align-items: center;">
           <div class="signal">
             <?php

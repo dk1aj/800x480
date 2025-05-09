@@ -54,7 +54,7 @@ define("KEY37", array('Memo20','##','purple'));
 define("KEY38", array('Memo21','##','purple'));
 define("KEY39", array('EchoLink','*3#','purple'));
 define("KEY41", array('TG 262','*91262#','red'));
-define("KEY42", array('Ref. Unlink','9#','red'));
+define("KEY42", array('Ref. Unlink','910#','red'));
 define("KEY43", array('Disconnect','##','red'));
 
 /////////////////////////////////////////////////   Free Radio Network //////////////////

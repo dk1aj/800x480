@@ -1,6 +1,6 @@
 <?php
 // Path to the database file
-$file_path = '/var/www/html/480x320/include/tgdb.dat';
+$file_path = '/var/www/html/800x480/include/tgdb.dat';
 
 // Load the database if it exists
 if (file_exists($file_path)) {
@@ -51,19 +51,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         html, body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
+            width: 800px;
+            height: 480px;
             background-color: black;
             color: white;
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: relative;
         }
         .form-container {
             width: 100%;
             max-width: 400px;
             text-align: center;
+            margin-top: 30px;
         }
         input[type="text"] {
             background-color: white;
@@ -74,16 +78,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 6px 0;
             font-size: 18px;
         }
-        input[type="submit"] {
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            margin-top: 14px;
+        }
+        input[type="submit"], .back-button {
             background-color: #333;
             color: white;
             padding: 14px 28px;
             border: none;
             cursor: pointer;
             font-size: 20px;
-            margin-top: 14px;
+            text-decoration: none;
         }
-        input[type="submit"]:hover {
+        input[type="submit"]:hover, .back-button:hover {
             background-color: #555;
         }
         .message {
@@ -91,14 +102,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-size: 16px;
         }
     </style>
-
-<script>
+    <script>
         let timeout;
         function resetTimer() {
             clearTimeout(timeout);
             timeout = setTimeout(() => {
                 window.location.href = 'index.php';
-            }, 5000); // 5 seconds
+            }, 5000);
         }
         window.onload = resetTimer;
         document.onmousemove = resetTimer;
@@ -125,16 +135,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="tg_name"><b>TG Name</b>:</label><br>
             <input type="text" id="tg_name" name="tg_name" required><br>
 
-            <input type="submit" value="Add Record">
+            <div class="button-group">
+                <input type="submit" value="Add Record">
+                <a class="back-button" href="index.php">Back</a>
+            </div>
         </form>
     </div>
-
-    <div class="back-button-container">
-    <?php
-    $backTarget = 'index.php';
-    include_once 'include/back_button.php'; 
-    ?>
-  </div> 
-
 </body>
 </html>

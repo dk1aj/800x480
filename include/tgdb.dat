@@ -5,7 +5,7 @@
 $tgdb_array = [ 
 '2704' => 'FunkTag Kassel 2024',
 '1' => 'MultiRegio (DL-Repeater exklusiv)',
-'2' => 'CQ CQ All > No QSO > PSE QSY',
+'2' => 'No QSO > PSE QSY',
 '7' => 'LausitzLink',
 '8' => 'Local Quasselstrippe',
 '9' => 'Local Talk',

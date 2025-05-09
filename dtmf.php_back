@@ -1,30 +1,64 @@
 <?php
 session_start();
 
-// Initialisiere DTMF-Display
-if (!isset($_SESSION['dtmf_display'])) 
-{
+// Logging ins Webverzeichnis
+function write_log($message) {
+    $logfile = __DIR__ . '/dtmf.log';
+    $timestamp = date('d-m-Y H:i:s');
+    file_put_contents($logfile, "[$timestamp] $message\n", FILE_APPEND);
+}
+
+// DTMF-Display initialisieren
+if (!isset($_SESSION['dtmf_display'])) {
     $_SESSION['dtmf_display'] = '';
 }
 
 $redirectAfterHash = false;
 
-// Funktion zum sicheren Senden von DTMF an /tmp/dtmf_svx
+// Zeichen einzeln senden (PTY-kompatibel, kein file_exists, kein sudo)
+// function send_dtmf($dtmf_char) {
+//     if (!in_array($dtmf_char, ['0','1','2','3','4','5','6','7','8','9','*','#'])) {
+//         write_log("❌ Ungültiges DTMF-Zeichen: '$dtmf_char'");
+//         return false;
+//     }
+
+//     $char = addcslashes($dtmf_char, "'\\"); // sichere Übergabe
+//     $cmd = "sh -c 'echo \"$char\" > /tmp/dtmf_svx'";
+//     exec($cmd, $output, $result);
+
+//     if ($result === 0) {
+//         write_log("✅ DTMF gesendet: '$dtmf_char'");
+//         return true;
+//     } else {
+//         write_log("❌ Fehler beim Senden von '$dtmf_char' ($result)");
+//         return false;
+//     }
+// }
 function send_dtmf($dtmf_char) {
-  $pty_path = '/tmp/dtmf_svx';
-  
-  // Prüfen, ob die Datei existiert
-  if (file_exists($pty_path)) {
-      // Den DTMF-Code direkt in die Datei schreiben
-      file_put_contents($pty_path, $dtmf_char);
-      return true;
-  } else {
-      error_log("Fehler: $pty_path existiert nicht");
-      return false;
-  }
+  $logfile = __DIR__ . '/dtmf.log';
+
+  // Testlog: Wer bin ich?
+  $whoami = trim(shell_exec('whoami'));
+  file_put_contents($logfile, "[TEST] whoami = $whoami\n", FILE_APPEND);
+
+  // Schreibe rein, was wir ausführen
+  $cmd = "echo \"$dtmf_char\" > /tmp/dtmf_svx";
+  file_put_contents($logfile, "[TEST] CMD = $cmd\n", FILE_APPEND);
+
+  // tatsächlicher Aufruf – aber in eine temporäre Datei zur Kontrolle
+  shell_exec("echo \"$dtmf_char\" > /tmp/dtmf_test_echo");
+
+  // Versuch: direkt auf die echte Pipe
+  shell_exec($cmd);
+
+  file_put_contents($logfile, "[TEST] shell_exec beendet\n", FILE_APPEND);
+  return true;
 }
 
-// Eingaben vom Keypad verarbeiten
+
+
+
+// Tasteneingabe verarbeiten
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $map = [
         'button20' => '0',
@@ -43,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     foreach ($map as $key => $value) {
         if (isset($_POST[$key])) {
+            write_log("Taste gedrückt: $value");
             send_dtmf($value);
             if ($value === '#') {
                 $_SESSION['dtmf_display'] = '';
@@ -55,15 +90,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['buttonCLR'])) {
         $_SESSION['dtmf_display'] = '';
+        write_log("DTMF-Display zurückgesetzt durch CLR");
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="5;url=index.php">
+  <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DTMF Pad</title>
   <style>
     body {
       background-color: #000;
@@ -73,7 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       max-width: 480px;
       margin: 0 auto;
       padding-top: 10px;
-      position: relative;
     }
     .lcd {
       background-color: #222;
@@ -127,10 +162,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       grid-gap: 4px;
       justify-content: center;
       margin: 0 auto;
-      position: relative;
     }
   </style>
-
   <?php if ($redirectAfterHash): ?>
     <script>window.location.href = 'index.php';</script>
   <?php else: ?>
@@ -139,7 +172,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
   <?php endif; ?>
 </head>
-
 <body>
   <div class="lcd">
     <?php echo str_pad(substr($_SESSION['dtmf_display'], -16), 16, ' ', STR_PAD_LEFT); ?>

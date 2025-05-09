@@ -16,14 +16,21 @@ define('ALLOW_LOGIC_CHANGES', false);
       --accent: DarkOrange;
     }
 
-    body {
-      height: 100vh;
+    html, body {
       margin: 0;
-      font: 12pt Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
+      padding: 0;
+      width: 800px;
+      height: 480px;
       background-color: var(--bg-dark);
       color: var(--text-dark);
+      font: 12pt Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
     }
 
     .main-content {
@@ -33,6 +40,7 @@ define('ALLOW_LOGIC_CHANGES', false);
       justify-content: flex-start;
       align-items: center;
       padding-top: 40px;
+      box-sizing: border-box;
     }
 
     form {
@@ -89,17 +97,16 @@ define('ALLOW_LOGIC_CHANGES', false);
       margin-bottom: 20px;
       font-weight: bold;
       font-size: 16px;
-      color: red; /* <-- jetzt ROT */
+      color: red;
     }
 
-
-
     .back-button-container {
-      position: fixed;
-      bottom: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 280px;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
       z-index: 1000;
     }
   </style>

@@ -11,7 +11,7 @@ include_once 'include/tools.php';
   <meta http-equiv="refresh" content="5;url=index.php">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link rel="icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
+  <link rel="icon" href="images/dk1aj_lg.png" sizes="16x16 32x32" type="image/png">
   <link href="css/featherlight.css" rel="stylesheet">
 
   <title>SVXLink Dashboard</title>

@@ -11,8 +11,8 @@ include_once 'include/tools.php';
   <meta http-equiv="refresh" content="10;url=config.php" />
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
-  <title>SVXLink Dashboard</title>
+  <link rel="shortcut icon" href="images/dk1aj_lg.png" sizes="16x16 32x32" type="image/png">
+  <title>DSI Pixel-perfect display Control</title>
 
   <?php include_once "include/browserdetect.php"; ?>
   <script src="scripts/jquery.min.js"></script>

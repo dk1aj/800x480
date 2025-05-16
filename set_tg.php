@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   </style>
 </head>
 <body>
-  <h1>Pixel Vista 25</h1>
+  <h1>SVX Vista 25</h1>
   <div class="message">
     <?php if ($error): ?>
       <?php echo htmlspecialchars($error); ?><br>

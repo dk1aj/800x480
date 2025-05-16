@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SVXLink Control</title>
+  <title>DSI Pixel-perfect display Control</title>
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="refresh" content="2;url=index.php"> 
   <style>

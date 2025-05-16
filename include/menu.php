@@ -67,7 +67,7 @@
 <div class="button-row">
   <a href="dtmf.php"><button class="blue" name="button0">DTMF</button></a>
   <!-- <a href="tg.php"><button class="purple" name="button0">MEMO</button></a> -->
-  <a href="test.php"><button class="red" name="button0">SWITCH</button></a> 
+  <a href="switch.php"><button class="red" name="button0">SWITCH</button></a> 
   <!-- <a href="stream_deck.php"><button class="purple" name="button0">DECK</button></a> -->
 
   <a href="svx.php"><button class="yellow" name="button0">SvxLink</button></a>

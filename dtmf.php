@@ -1,96 +1,45 @@
 <?php
 session_start();
 
-// Logging ins Webverzeichnis
-function write_log($message) {
-    $logfile = __DIR__ . '/dtmf.log';
-    $timestamp = date('d-m-Y H:i:s');
-    file_put_contents($logfile, "[$timestamp] $message\n", FILE_APPEND);
-}
-
-// DTMF-Display initialisieren
+// Initialisiere das DTMF-Display, wenn nicht vorhanden
 if (!isset($_SESSION['dtmf_display'])) {
     $_SESSION['dtmf_display'] = '';
 }
 
-$redirectAfterHash = false;
-
-// Zeichen einzeln senden (PTY-kompatibel, kein file_exists, kein sudo)
-// function send_dtmf($dtmf_char) {
-//     if (!in_array($dtmf_char, ['0','1','2','3','4','5','6','7','8','9','*','#'])) {
-//         write_log("❌ Ungültiges DTMF-Zeichen: '$dtmf_char'");
-//         return false;
-//     }
-
-//     $char = addcslashes($dtmf_char, "'\\"); // sichere Übergabe
-//     $cmd = "sh -c 'echo \"$char\" > /tmp/dtmf_svx'";
-//     exec($cmd, $output, $result);
-
-//     if ($result === 0) {
-//         write_log("✅ DTMF gesendet: '$dtmf_char'");
-//         return true;
-//     } else {
-//         write_log("❌ Fehler beim Senden von '$dtmf_char' ($result)");
-//         return false;
-//     }
-// }
+// Funktion zum Senden eines DTMF-Zeichens
 function send_dtmf($dtmf_char) {
-  $logfile = __DIR__ . '/dtmf.log';
-
-  // Testlog: Wer bin ich?
-  $whoami = trim(shell_exec('whoami'));
-  file_put_contents($logfile, "[TEST] whoami = $whoami\n", FILE_APPEND);
-
-  // Schreibe rein, was wir ausführen
-  $cmd = "echo \"$dtmf_char\" > /tmp/dtmf_svx";
-  file_put_contents($logfile, "[TEST] CMD = $cmd\n", FILE_APPEND);
-
-  // tatsächlicher Aufruf – aber in eine temporäre Datei zur Kontrolle
-  shell_exec("echo \"$dtmf_char\" > /tmp/dtmf_test_echo");
-
-  // Versuch: direkt auf die echte Pipe
-  shell_exec($cmd);
-
-  file_put_contents($logfile, "[TEST] shell_exec beendet\n", FILE_APPEND);
-  return true;
+    $whoami = trim(shell_exec('whoami'));
+    shell_exec("echo \"$dtmf_char\" > /tmp/dtmf_test_echo");
+    $cmd = "echo \"$dtmf_char\" > /tmp/dtmf_svx";
+    shell_exec($cmd);
+    return true;
 }
 
+$redirectAfterInput = false;
+$redirectImmediate = false;
+$flashLCD = false;
 
-
-
-// Tasteneingabe verarbeiten
+// Verarbeite POST-Anfragen (Formulareingaben)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $map = [
-        'button20' => '0',
-        'button21' => '1',
-        'button22' => '2',
-        'button23' => '3',
-        'button24' => '4',
-        'button25' => '5',
-        'button26' => '6',
-        'button27' => '7',
-        'button28' => '8',
-        'button29' => '9',
-        'button30' => '*',
-        'button31' => '#'
+        'button20' => '0', 'button21' => '1', 'button22' => '2', 'button23' => '3',
+        'button24' => '4', 'button25' => '5', 'button26' => '6', 'button27' => '7',
+        'button28' => '8', 'button29' => '9', 'button30' => '*', 'button31' => '#'
     ];
 
     foreach ($map as $key => $value) {
         if (isset($_POST[$key])) {
-            write_log("Taste gedrückt: $value");
             send_dtmf($value);
             if ($value === '#') {
                 $_SESSION['dtmf_display'] = '';
-                $redirectAfterHash = true;
+                $redirectImmediate = true;
+                $flashLCD = true;
             } else {
                 $_SESSION['dtmf_display'] .= $value;
+                $redirectAfterInput = true;
             }
+            break;
         }
-    }
-
-    if (isset($_POST['buttonCLR'])) {
-        $_SESSION['dtmf_display'] = '';
-        write_log("DTMF-Display zurückgesetzt durch CLR");
     }
 }
 ?>
@@ -101,84 +50,105 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>DTMF Pad</title>
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 800px;
+      height: 480px;
       background-color: #000;
       color: #fff;
       font-family: Arial, sans-serif;
-      text-align: center;
-      max-width: 480px;
-      margin: 0 auto;
-      padding-top: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .lcd {
+      position: relative;
       background-color: #222;
       border: 2px solid #0f0;
       border-radius: 6px;
-      height: 72px;
-      line-height: 72px;
-      font-size: 32px;
-      font-family: monospace;
-      margin: 10px auto 20px auto;
-      width: 490px;
-      transition: all 0.2s ease-in-out;
-    }
-    .dtmf-button, .clr-button {
-      width: 75px;
       height: 75px;
-      font-size: 22px;
-      margin: 2px;
+      font-size: 36px;
+      font-family: monospace;
+      margin: 5px auto 10px auto;
+      width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .lcd.flash {
+      background-color: #0f0 !important;
+      color: #000;
+    }
+    .lcd.flash::before {
+      content: "DTMF GESENDET";
+      position: absolute;
+      font-size: 28px;
+      color: #000;
+    }
+    .dtmf-button {
+      width: 70px;
+      height: 70px;
+      font-size: 20px;
+      margin: 3px;
       border: none;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: background-color 0.1s ease;
-    }
-    .dtmf-button {
-      background: linear-gradient(to bottom, #337ab7 0%, #265a88 100%);
+      background: linear-gradient(to bottom, #337ab7, #265a88);
       color: white;
     }
     button[name="button30"], button[name="button31"] {
       background: linear-gradient(to bottom, #ff7f50, #ff4500);
     }
-    .dtmf-button:active {
-      background: #00ff00 !important;
-      color: black !important;
-    }
-    .clr-button:active {
-      background: #ffff00 !important;
-      color: black !important;
-    }
-    .clr-button {
-      background: linear-gradient(to bottom, #d9534f 0%, #c9302c 100%);
-      color: white;
-      position: absolute;
-      top: 72%;
-      left: calc(50% + 140px);
-    }
-    .keypad-grid {
+    .keypad {
       display: grid;
-      grid-template-columns: repeat(3, 90px);
-      grid-gap: 4px;
-      justify-content: center;
-      margin: 0 auto;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, auto);
+      gap: 6px;
+      justify-items: center;
+      align-items: center;
     }
   </style>
-  <?php if ($redirectAfterHash): ?>
-    <script>window.location.href = 'index.php';</script>
-  <?php else: ?>
-    <script>
+  <script>
+    let inactivityTimeout;
+
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimeout);
+      inactivityTimeout = setTimeout(() => {
+        window.location.href = 'index.php';
+      }, 5000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ['mousedown', 'touchstart', 'keydown'].forEach(evt =>
+        document.addEventListener(evt, resetInactivityTimer)
+      );
+      resetInactivityTimer();
+
+      <?php if ($redirectImmediate): ?>
+      // Zeige visuelles Feedback bei #
+      const lcd = document.querySelector('.lcd');
+      lcd.classList.add('flash');
+      setTimeout(() => {
+        window.location.href = 'index.php';
+      }, 300);
+      <?php elseif ($redirectAfterInput): ?>
       setTimeout(() => { window.location.href = 'index.php'; }, 5000);
-    </script>
-  <?php endif; ?>
+      <?php endif; ?>
+    });
+  </script>
 </head>
 <body>
-  <div class="lcd">
-    <?php echo str_pad(substr($_SESSION['dtmf_display'], -16), 16, ' ', STR_PAD_LEFT); ?>
-  </div>
-
   <form method="post">
-    <div class="keypad-grid">
+    <div class="lcd">
+      <?php echo str_pad(substr($_SESSION['dtmf_display'], -16), 16, ' ', STR_PAD_LEFT); ?>
+    </div>
+    <div class="keypad">
       <button class="dtmf-button" type="submit" name="button21">1</button>
       <button class="dtmf-button" type="submit" name="button22">2</button>
       <button class="dtmf-button" type="submit" name="button23">3</button>
@@ -192,7 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button class="dtmf-button" type="submit" name="button20">0</button>
       <button class="dtmf-button" type="submit" name="button31">#</button>
     </div>
-    <button class="clr-button" type="submit" name="buttonCLR">CLR</button>
   </form>
 </body>
 </html>

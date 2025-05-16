@@ -45,16 +45,16 @@ define("KEY15", array('No TG','*910#','red'));
 ///////////SvxLink menu //////////////////////////////////////////////////////////////////////
 define("KEY30", array('Parrot ON 1#','1#','orange'));
 define("KEY31", array('Parrot OFF ##','##','orange'));
-define("KEY32", array('Memo15','##','orange'));
+define("KEY32", array('TG 20','*9120#','orange'));
 define("KEY33", array('PARROT OFF ##','##','purple'));
-define("KEY34", array('Memo17','##','purple'));
-define("KEY35", array('Memo18','##','purple'));
-define("KEY36", array('Memo19','##','purple'));
-define("KEY37", array('Memo20','##','purple'));
+define("KEY34", array('IDENT','*#','purple'));
+define("KEY35", array('1337','*911337#','purple'));
+define("KEY36", array('1338','*911338#','purple'));
+define("KEY37", array('69','*9169#','purple'));
 define("KEY38", array('Memo21','##','purple'));
-define("KEY39", array('EchoLink','*3#','purple'));
+define("KEY39", array('Unlink TG','*91#','purple'));
 define("KEY41", array('TG 262','*91262#','red'));
-define("KEY42", array('Ref. Unlink','910#','red'));
+define("KEY42", array('TG 0','910#','red'));
 define("KEY43", array('Disconnect','##','red'));
 
 /////////////////////////////////////////////////   Free Radio Network //////////////////

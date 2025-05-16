@@ -90,61 +90,27 @@
 <body>
   <div class="container">
     <?php
-      $statusMessage = "";
-
-      if (isset($_POST['button99'])) {
-        shell_exec('sudo /home/pi/pkill-pi.sh');
-        echo '<h1 style="color:#FFFFFF;" data-auto-redirect>Chrome will restart on DSI</h1>';
-      }
-      if (isset($_POST['button98'])) {
-        shell_exec('sudo shutdown now');
-        echo '<h1 style="color:#454545;" data-auto-redirect>Raspberry Shutdown</h1>';
-      }
-      if (isset($_POST['button97'])) {
-        shell_exec('sudo reboot');
-        echo '<h1 style="color:#454545;">Raspberry Reboot</h1>';
-      }
-      if (isset($_POST['button96'])) {
-        shell_exec('sudo systemctl stop svxlink');
-        echo '<h1 style="color:red;">The SvxLink service has stopped.<br>SvxLink is no longer running. </h1>';
-      }
-      if (isset($_POST['button95'])) {
-        shell_exec('sudo systemctl restart svxlink');
-        echo '<h1 style="color:green;" data-auto-redirect> SvxLink service is about to restart</h1>';
-      }
-
-      // Neue Dummy-Buttons mit sichtbarem Feedback
-      if (isset($_POST['spk_mute'])) {
-        shell_exec('sudo /home/pi/vol_ctr.sh spk_mute');
-        $statusMessage = "Speaker wurde stummgeschaltet.";
-      }
-      if (isset($_POST['mic_mute'])) {
-        shell_exec('sudo /home/pi/dummy.sh mic_mute');
-        $statusMessage = "nichts gemacht.";
-      }
-      if (isset($_POST['spk_vol_up'])) {
-        shell_exec('sudo /home/pi/vol_ctr.sh spk_vol_up');
-        $statusMessage = "Lautsprecherlautstärke erhöht.";
-      }
-      if (isset($_POST['spk_vol_dwn'])) {
-        shell_exec('sudo /home/pi/vol_ctr.sh spk_vol_dwn');
-        $statusMessage = "Lautsprecherlautstärke verringert.";
-      }
-      if (isset($_POST['mic_vol_up'])) {
-        shell_exec('sudo /home/pi/vol_ctr.sh mic_vol_up');
-        $statusMessage = "Mikrofonlautstärke erhöht.";
-      }
-      if (isset($_POST['mic_vol_dwn'])) {
-        shell_exec('sudo /home/pi/vol_ctr.sh mic_vol_dwn');
-        $statusMessage = "Mikrofonlautstärke verringert.";
-      }
-
-      // Nachricht ausgeben (wenn gesetzt)
-      if (!empty($statusMessage)) {
-        echo '<h1 style="color:lightblue;">' . htmlspecialchars($statusMessage) . '</h1>';
-      }
+    if (isset($_POST['button99'])) {
+      shell_exec('sudo /home/pi/pkill-pi.sh');
+      echo '<h1 style="color:#FFFFFF;" data-auto-redirect>Chrome will restart on DSI</h1>';
+    }
+    if (isset($_POST['button98'])) {
+      shell_exec('sudo shutdown now');
+      echo '<h1 style="color:#454545;" data-auto-redirect>Raspberry Shutdown</h1>';
+    }
+    if (isset($_POST['button97'])) {
+      shell_exec('sudo reboot');
+      echo '<h1 style="color:#454545;">Raspberry Reboot</h1>';
+    }
+    if (isset($_POST['button96'])) {
+      shell_exec('sudo systemctl stop svxlink');
+      echo '<h1 style="color:red;">The SvxLink service has stopped.<br>SvxLink is no longer running. </h1>';
+    }
+    if (isset($_POST['button95'])) {
+      shell_exec('sudo systemctl restart svxlink');
+      echo '<h1 style="color:green;" data-auto-redirect> SvxLink service is about to restart</h1>';
+    }
     ?>
-
     <form method="post" class="button-grid">
       <button class="red" name="button97">Raspberry<br>reboot</button>
       <button class="red" name="button98">Raspberry<br>shutdown</button>
@@ -152,35 +118,33 @@
       <button class="orange" name="button96">SvxLink<br>stop</button>
       <button class="orange" name="button95">SvxLink<br>restart</button>
       <button class="blue" name="button99">Chrome<br>restart</button>
+      <!-- <div></div><div></div><div></div> Leere Felder für Rasterausgleich -->
     </form>
 
     <div class="nav-container">
       <div class="nav-button"><a href="reflector.php"><button class="blue">SvxReflector switch</button></a></div>
+      <!-- <div class="nav-button"><a href="frn.php"><button class="green">FRN<br>client</button></a></div> -->
       <div class="nav-button"><a href="status.php"><button class="green">Status<br>svxlink</button></a></div>
       <div class="nav-button"><a href="lh.php"><button class="green">Lastheards<br>List</button></a></div>
       <div class="nav-button"><a href="extra.php"><button class="orange">EXTRA<br>SET</button></a></div>
       <div class="nav-button"><a href="update.php"><button class="purple"> ADD<br>CALL & TG </button></a></div>
+              <!-- Abstandselement -->
       <div style="width: 100%; height: 20px;"></div>
+      <div class="nav-button"><a href="index.php"><button class="blue"> SPK<br>MUTE </button></a></div>
+      <div class="nav-button"><a href="index.php"><button class="blue"> MIC<br>MUTE </button></a></div>
+      <div class="nav-button"><a href="index.php"><button class="blue"> SPK<br>VOL UP</button></a></div>
+      <div class="nav-button"><a href="index.php"><button class="blue"> SPK<br>VOL DWN</button></a></div>
+      <div class="nav-button"><a href="index.php"><button class="blue">MIC<br>VOL UP</button></a></div>
+      <div class="nav-button"><a href="index.php"><button class="blue">MIC<br> VOL DOWN</button></a></div>
     </div>
-
-    <form method="post" class="nav-container">
-      <div class="nav-button"><button class="blue" name="spk_mute">SPK<br>MUTE</button></div>
-      <div class="nav-button"><button class="blue" name="mic_mute">MIC<br>MUTE</button></div>
-      <div class="nav-button"><button class="orange" name="spk_vol_up">SPK<br>VOL UP</button></div>
-      <div class="nav-button"><button class="blue" name="spk_vol_dwn">SPK<br>VOL DWN</button></div>
-      <div class="nav-button"><button class="green" name="mic_vol_up">MIC<br>VOL UP</button></div>
-      <div class="nav-button"><button class="blue" name="mic_vol_dwn">MIC<br>VOL DOWN</button></div>
-    </form>
   </div>
 
-  <?php if (empty($statusMessage)) : ?>
-    <div class="back-button-container">
-      <?php
-      $backTarget = 'index.php';
-      include_once 'include/back_button.php'; 
-      ?>
-    </div>
-  <?php endif; ?>
+  <div class="back-button-container">
+    <?php
+    $backTarget = 'index.php';
+    include_once 'include/back_button.php'; 
+    ?>
+  </div>
 
   <script>
     const messageShown = document.querySelector('h1[data-auto-redirect]');

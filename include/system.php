@@ -1,12 +1,16 @@
 <?php
+// Konfiguration
+$version = "v0.0.7";
 define('ALLOW_LOGIC_CHANGES', false);
-// $mmdvmActive = trim(shell_exec('systemctl is-active mmdvm')) === 'active';
-$svxlinkActive = trim(shell_exec('systemctl is-active svxlink')) === 'active';
-$version = "v0.0.6";
 
+// Status: SvxLink aktiv?
+$svxlinkActive = trim(shell_exec('systemctl is-active svxlink')) === 'active';
+
+// CPU-Temperatur ermitteln
 $cpuTempHTML = "<td style=\"background: white\">---</td>\n";
-if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
-    $raw = (int) @file_get_contents('/sys/class/thermal/thermal_zone0/temp');
+$thermalFile = '/sys/class/thermal/thermal_zone0/temp';
+if (is_readable($thermalFile)) {
+    $raw = (int) @file_get_contents($thermalFile);
     if ($raw > 0) {
         $temp = round($raw / 1000);
         $color = $temp >= 70 ? "#f00" : ($temp >= 57 ? "#fa0" : "#1d1");
@@ -14,34 +18,52 @@ if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
     }
 }
 
+// CPU-Auslastung berechnen
 function getCpuUsage() {
     $s1 = explode(" ", preg_replace("/^cpu\s+/", "", file('/proc/stat')[0]));
     usleep(500000);
     $s2 = explode(" ", preg_replace("/^cpu\s+/", "", file('/proc/stat')[0]));
-    $idle1 = $s1[3]; $idle2 = $s2[3];
-    $total1 = array_sum($s1); $total2 = array_sum($s2);
+    $idle1 = $s1[3] ?? 0;
+    $idle2 = $s2[3] ?? 0;
+    $total1 = array_sum($s1);
+    $total2 = array_sum($s2);
     $delta = $total2 - $total1;
-    return $delta ? round(100 * (($delta - ($idle2 - $idle1)) / $delta)) : 0;
+    return $delta > 0 ? round(100 * (($delta - ($idle2 - $idle1)) / $delta)) : 0;
 }
 $cpu = getCpuUsage();
 $cpuUsageHTML = "<td style=\"background: " . ($cpu >= 80 ? "#f00" : ($cpu >= 50 ? "#fa0" : "#1d1")) . "\">" . $cpu . "%</td>\n";
 
-$signal = exec("/sbin/iwconfig wlan0 | grep -i 'signal level' | awk '{print \$4}' | cut -d'=' -f2");
-function getSignalBars($dbm) {
-    if ($dbm >= -50) return 4;
-    if ($dbm >= -60) return 3;
-    if ($dbm >= -70) return 2;
-    if ($dbm >= -80) return 1;
-    return 0;
+// WLAN-Signalstärke abrufen
+function getSignalLevel($interface = 'wlan0') {
+    $output = shell_exec("/sbin/iwconfig $interface 2>/dev/null");
+    if (preg_match('/Signal level=(-?[0-9]+) dBm/', $output, $match)) {
+        return (int)$match[1];
+    }
+    return null;
 }
-$bars = getSignalBars($signal);
+
+$signal = getSignalLevel();
+if ($signal === null) {
+    $bars = -1;
+    $host = trim(shell_exec("hostname"));
+    $domain = trim(shell_exec("dnsdomainname"));
+    $ip = $host . (!empty($domain) ? "." . $domain : "");
+    $netType = "LAN 🖧";
+} else {
+    if ($signal >= -50) $bars = 4;
+    elseif ($signal >= -60) $bars = 3;
+    elseif ($signal >= -70) $bars = 2;
+    elseif ($signal >= -80) $bars = 1;
+    else $bars = 0;
+    $ip = trim(shell_exec("hostname -I | awk '{print \$1}'"));
+    $netType = "WLAN 📶";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
   <title>Pixel Vista 25</title>
   <style>
     body {
@@ -51,14 +73,16 @@ $bars = getSignalBars($signal);
       font-size: 12px;
     }
     table {
-      margin: 0 auto; /* HIER hinzugefügt: Tabelle horizontal zentrieren */
+      margin: 0 auto;
     }
     .signal {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       height: 20px;
-      width: 30px;
+      width: 40px;
       margin-right: 5px;
+      justify-content: center;
+      flex-direction: column;
     }
     .bar {
       width: 5px;
@@ -69,35 +93,55 @@ $bars = getSignalBars($signal);
     .bar.active {
       background: white;
     }
+    .net-type {
+      font-size: 10px;
+      color: white;
+      margin-top: 2px;
+    }
     .ip {
       font-weight: bold;
       color: yellow;
       font-size: 12px;
+    }
+    .blinking {
+      animation: blink 1s step-start 0s infinite;
+    }
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
   <table style="margin-top:0;">
     <tr>
-      <th style="width: 20%; background: blue;">
+      <th style="width: 22%; background: blue;">
         <div style="display: flex; align-items: center;">
           <div class="signal">
             <?php
               $heights = [5, 10, 15, 20];
-              for ($i = 0; $i < 4; $i++) {
-                  $active = $i < $bars ? 'active' : '';
-                  echo "<div class='bar $active' style='height: {$heights[$i]}px;'></div>";
+              if ($bars >= 0) {
+                  for ($i = 0; $i < 4; $i++) {
+                      $active = $i < $bars ? 'active' : '';
+                      echo "<div class='bar $active' style='height: {$heights[$i]}px;'></div>";
+                  }
               }
             ?>
+            <div class="net-type"><?= $netType ?></div>
           </div>
-          <span class="ip"><?= str_replace(' ', '<br>', exec("hostname -I | awk '{print \$1}'")) ?></span>
+          <span class="ip"><?= str_replace(' ', '<br>', $ip) ?></span>
         </div>
       </th>
       <th colspan="2" style="width: 250px; background: red;">
-        <span style="font-weight: bold; color: white;">Pixel Vista 25</span>
-        <!-- <span style="color: white; font-size: 10px;">by dk1aj from M0IQF · <?= $version ?></span>-->
+        <span style="font-weight: bold; color: white;">SVX Vista 25</span>
         <span style="color: white; font-size: 10px;">by dk1aj from M0IQF · <?= $version ?></span>
-        SvxLink: <span style="color: <?= $svxlinkActive ? 'white' : 'black' ?>;">  <?= $svxlinkActive ? 'ACTIVE' : 'INACTIVE' ?> </span>
+        <?php
+          $svxText = $svxlinkActive ? 'ACTIVE' : 'INACTIVE';
+          $svxColor = $svxlinkActive ? 'white' : 'black';
+          $svxClass = $svxlinkActive ? '' : 'blinking';
+        ?>
+        SvxLink: <span class="<?= $svxClass ?>" style="color: <?= $svxColor ?>;">&nbsp;<?= $svxText ?>&nbsp;</span>
       </th>
       <?= $cpuTempHTML ?>
       <?= $cpuUsageHTML ?>

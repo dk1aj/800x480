@@ -419,3 +419,428 @@
 [TEST] CMD = echo "6" > /tmp/dtmf_svx
 [TEST] shell_exec beendet
 [09-05-2025 16:52:31] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:19:26] Taste gedrückt: 9
+[TEST] whoami = svxlink
+[TEST] CMD = echo "9" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:19:27] Taste gedrückt: 1
+[TEST] whoami = svxlink
+[TEST] CMD = echo "1" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:19:29] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:19:29] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:19:30] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:19:32] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:23:54] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:23:54] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:23:55] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:23:55] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:05] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:29:08] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:29:30] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:32] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:33] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:35] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:29:36] Taste gedrückt: 0
+[TEST] whoami = svxlink
+[TEST] CMD = echo "0" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:37] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:38] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:39] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:39] Taste gedrückt: 2
+[TEST] whoami = svxlink
+[TEST] CMD = echo "2" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:29:40] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:31:55] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:31:55] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:31:56] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:15] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:17] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:18] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:18] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:18] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:18] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:19] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:20] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:33:21] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:34:28] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:34:32] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:34:32] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:34:33] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:34:34] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:37:07] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:37:54] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:38:20] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:33] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:39] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:40] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:41] Taste gedrückt: 4
+[TEST] whoami = svxlink
+[TEST] CMD = echo "4" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:42] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:43] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:43] Taste gedrückt: 9
+[TEST] whoami = svxlink
+[TEST] CMD = echo "9" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:43] Taste gedrückt: 6
+[TEST] whoami = svxlink
+[TEST] CMD = echo "6" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:44] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:44] Taste gedrückt: 4
+[TEST] whoami = svxlink
+[TEST] CMD = echo "4" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:39:47] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:40:01] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:40:01] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:40:01] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:40:02] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:20] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:41:21] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:22] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:22] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:22] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:22] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:22] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:24] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:41:26] Taste gedrückt: 9
+[TEST] whoami = svxlink
+[TEST] CMD = echo "9" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:27] Taste gedrückt: 1
+[TEST] whoami = svxlink
+[TEST] CMD = echo "1" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:29] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:30] Taste gedrückt: 0
+[TEST] whoami = svxlink
+[TEST] CMD = echo "0" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:41:32] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:42:11] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:42:26] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:42:29] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:43:25] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:43:55] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:03] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:15] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:22] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:22] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:23] Taste gedrückt: 6
+[TEST] whoami = svxlink
+[TEST] CMD = echo "6" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:23] Taste gedrückt: 4
+[TEST] whoami = svxlink
+[TEST] CMD = echo "4" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:25] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:44:46] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:45:10] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:46:35] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:47:20] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:49] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:50] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:50] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:51] Taste gedrückt: 8
+[TEST] whoami = svxlink
+[TEST] CMD = echo "8" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:54] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:48:55] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:55] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:56] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:56] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:48:57] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:08] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:08] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:08] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:08] Taste gedrückt: 5
+[TEST] whoami = svxlink
+[TEST] CMD = echo "5" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:11] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:49:23] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:23] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:23] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:24] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:24] Taste gedrückt: 7
+[TEST] whoami = svxlink
+[TEST] CMD = echo "7" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:27] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:49:34] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:49:39] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:52:28] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:54:04] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:54:08] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:54:31] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:54:47] DTMF-Display zurückgesetzt durch CLR
+[10-05-2025 07:55:00] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet
+[10-05-2025 07:56:03] Taste gedrückt: #
+[TEST] whoami = svxlink
+[TEST] CMD = echo "#" > /tmp/dtmf_svx
+[TEST] shell_exec beendet

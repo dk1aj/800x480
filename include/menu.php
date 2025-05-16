@@ -38,7 +38,7 @@
     }
 
     .blue {
-      background: linear-gradient(to bottom,rgb(170, 209, 248),rgb(1, 109, 192));
+      background: linear-gradient(to bottom,rgb(240, 240, 240),rgb(2, 168, 146));
       color: black;
     }
 

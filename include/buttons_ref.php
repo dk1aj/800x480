@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reflector Steuerung</title>
+ <title>SvxDSI </title>
     <link rel="stylesheet" href="css/button_style_svx.css">
 </head>
 <body>

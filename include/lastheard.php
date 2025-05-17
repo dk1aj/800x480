@@ -6,7 +6,7 @@ include_once __DIR__.'/functions.php';
 include_once __DIR__.'/tgdb.dat';    
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>SvxLink Übersicht</title>

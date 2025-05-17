@@ -14,7 +14,7 @@ include_once 'include/tools.php';
   <link rel="icon" href="images/dk1aj_lg.png" sizes="16x16 32x32" type="image/png">
   <link href="css/featherlight.css" rel="stylesheet">
 
-  <title>SVXLink Dashboard</title>
+  <title>SvxDSI Dashboard</title>
 
   <?php include_once "include/browserdetect.php"; ?>
 

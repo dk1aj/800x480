@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="3;url=index.php">

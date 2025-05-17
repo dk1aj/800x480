@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Streamdeck Touch UI</title>
+  <title>SvxDSI Streamdeck Touch UI</title>
   <style>
     * {
       box-sizing: border-box;

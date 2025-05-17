@@ -8,7 +8,7 @@ define('ALLOW_LOGIC_CHANGES', false);
   <meta name="author" content="DK1AJ">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="refresh" content="5;url=index.php">
-  <title>SVXLink Control</title>
+  <title>SvxDSI Control</title>
   <style>
     :root {
       --bg-dark: #000;

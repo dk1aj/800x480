@@ -1,6 +1,6 @@
 <?php
 // Konfiguration
-$version = "v0.0.6";
+$version = "v0.0.7";
 define('ALLOW_LOGIC_CHANGES', false);
 
 // Status: SvxLink aktiv?
@@ -64,7 +64,7 @@ if ($signal === null) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Pixel Vista 25</title>
+ <title>SvxDSI </title>
   <style>
     body {
       max-width: 790px;
@@ -103,6 +103,14 @@ if ($signal === null) {
       color: yellow;
       font-size: 12px;
     }
+    .blinking {
+      animation: blink 1s step-start 0s infinite;
+    }
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -128,7 +136,12 @@ if ($signal === null) {
       <th colspan="2" style="width: 250px; background: red;">
         <span style="font-weight: bold; color: white;">SVX Vista 25</span>
         <span style="color: white; font-size: 10px;">by dk1aj from M0IQF · <?= $version ?></span>
-        SvxLink: <span style="color: <?= $svxlinkActive ? 'white' : 'black' ?>;">&nbsp;<?= $svxlinkActive ? 'ACTIVE' : 'INACTIVE' ?>&nbsp;</span>
+        <?php
+          $svxText = $svxlinkActive ? 'ACTIVE' : 'INACTIVE';
+          $svxColor = $svxlinkActive ? 'white' : 'black';
+          $svxClass = $svxlinkActive ? '' : 'blinking';
+        ?>
+        SvxLink: <span class="<?= $svxClass ?>" style="color: <?= $svxColor ?>;">&nbsp;<?= $svxText ?>&nbsp;</span>
       </th>
       <?= $cpuTempHTML ?>
       <?= $cpuUsageHTML ?>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DSI Pixel-perfect display Control</title>
+  <title>SvxDSI  Config</title>
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="refresh" content="2;url=index.php"> 
   <style>
@@ -148,7 +148,10 @@
     <form method="post" class="button-grid">
       <button class="red" name="button97">Raspberry<br>reboot</button>
       <button class="red" name="button98">Raspberry<br>shutdown</button>
-      <button class="green" name="button199">never touch<br>this button</button>
+      <!-- <button class="green" name="button199">never touch<br>this button</button> -->
+       <a href="sound_ctrl.php" class="nav-button" style="width: 100%;">
+        <button type="button" class="green">never touch<br>this button</button>
+      </a>
       <button class="orange" name="button96">SvxLink<br>stop</button>
       <button class="orange" name="button95">SvxLink<br>restart</button>
       <button class="blue" name="button99">Chrome<br>restart</button>

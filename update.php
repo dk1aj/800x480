@@ -9,7 +9,7 @@
   <meta name="author" content="DK1AJ" />
   <meta http-equiv="refresh" content="5;url=index.php" />
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Add Entries</title>
+ <title>SvxDSI</title>
   <style>
     html, body {
       margin: 0;

@@ -9,8 +9,7 @@ include_once 'include/browserdetect.php';
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <!-- <title><?= htmlspecialchars($progname) ?></title> -->
- <title>SVX DSI Pixel-perfect MAIN</title>
+ <title>SvxDSI MAIN</title>
  <link rel="shortcut icon" href="images/dk1aj_lg.png" sizes="16x16 32x32" type="image/x-icon">
  <link rel="stylesheet" href="css/style.css">
 

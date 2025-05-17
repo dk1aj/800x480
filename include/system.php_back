@@ -134,7 +134,7 @@ if ($signal === null) {
         </div>
       </th>
       <th colspan="2" style="width: 250px; background: red;">
-        <span style="font-weight: bold; color: white;">SVX Vista 25</span>
+        <span style="font-weight: bold; color: white;">SvxDSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span style="color: white; font-size: 10px;">by dk1aj from M0IQF · <?= $version ?></span>
         <?php
           $svxText = $svxlinkActive ? 'ACTIVE' : 'INACTIVE';

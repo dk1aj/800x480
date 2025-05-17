@@ -1,7 +1,20 @@
 <?php
 // Konfiguration
-$version = "v0.0.7";
+$dsi_version = "v0.1.1";
 define('ALLOW_LOGIC_CHANGES', false);
+
+// SvxLink-Version aus Logdatei extrahieren
+$logFilePath = '/var/log/svxlink';
+$svxVersion = 'n/a';
+if (is_readable($logFilePath)) {
+    $lines = file($logFilePath);
+    foreach ($lines as $line) {
+        if (preg_match('/SvxLink\s+v([\d\.@]+)/', $line, $match)) {
+            $svxVersion = $match[1];
+            break;
+        }
+    }
+}
 
 // Status: SvxLink aktiv?
 $svxlinkActive = trim(shell_exec('systemctl is-active svxlink')) === 'active';
@@ -64,7 +77,7 @@ if ($signal === null) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <title>SvxDSI </title>
+  <title>SvxDSI</title>
   <style>
     body {
       max-width: 790px;
@@ -134,15 +147,17 @@ if ($signal === null) {
         </div>
       </th>
       <th colspan="2" style="width: 250px; background: red;">
-        <span style="font-weight: bold; color: white;">SvxDSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span style="color: white; font-size: 10px;">by dk1aj from M0IQF · <?= $version ?></span>
+        <span style="font-size: 10px; color: white;">
+          <span style="color: white; font-weight: bold;">SvxDSI</span> by dk1aj from M0IQF · <?= $dsi_version ?> · SvxLink <?= $svxVersion ?>
+        </span>
         <?php
           $svxText = $svxlinkActive ? 'ACTIVE' : 'INACTIVE';
-          $svxColor = $svxlinkActive ? 'white' : 'black';
+          $svxColor = $svxlinkActive ? 'white' : 'cyan';
           $svxClass = $svxlinkActive ? '' : 'blinking';
         ?>
-        SvxLink: <span class="<?= $svxClass ?>" style="color: <?= $svxColor ?>;">&nbsp;<?= $svxText ?>&nbsp;</span>
+        &nbsp;&nbsp;&nbsp;Svx:<span class="<?= $svxClass ?>" style="color: <?= $svxColor ?>;"> <?= $svxText ?>&nbsp;</span>
       </th>
+
       <?= $cpuTempHTML ?>
       <?= $cpuUsageHTML ?>
     </tr>

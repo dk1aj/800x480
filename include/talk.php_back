@@ -122,7 +122,7 @@ if ($file) {
             echo "<div style=\"position: absolute; top: 63%; left: 20%; transform: translate(-50%, -50%);\">";
             echo "<div style=\"font-size: 20px; line-height: 1.6; text-align: left; color: white;\">";
             echo "<div style=\"margin-bottom: 10px;\">Name: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[1])) . "</span></div>";
-            // echo "<div style=\"margin-bottom: 10px;\">QTH: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[2])) . "</span></div>";
+            echo "<div style=\"margin-bottom: 10px;\">QTH: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[2])) . "</span></div>";
             echo "<div>Info: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[0])) . "</span></div>";
             echo "</div></div>";
         } else {
@@ -159,7 +159,6 @@ if ($file) {
             echo "<span style=\"color:red; font-size: 48px;\">No TG</span>";
         }
             
-
         // Anzeige von Zeit, zuletzt ausgewählter TG und Netz
         if (!empty($tgselect)) {
             $tgname = $tgdb_array[$tgselect] ?? 'NoNameTG';

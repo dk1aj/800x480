@@ -1,4 +1,5 @@
 <?php
+// 2025-05-17 21:22:16
 include_once __DIR__ . '/include/tgdb.dat';         // Talkgroup-Datenbank (TG-Nummer => Name)
 include_once __DIR__ . '/include/userdb.dat';       // Benutzerdatenbank (Callsign => Name, QTH, Info)
 
@@ -122,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   </style>
 </head>
 <body>
-  <h1>SVX Vista 25</h1>
+  <h1>SvxDSI</h1>
   <div class="message">
     <?php if ($error): ?>
       <?php echo htmlspecialchars($error); ?><br>

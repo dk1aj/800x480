@@ -10,6 +10,7 @@ $userdb_array = [
     'DK1AJ-DJ' => 'DJ, FM, Funknetz',
     'DG5NEK' => 'PI, Heribert, Franken',
     'DL3MX-HS' => 'PI, Alfred, Franken',
+    'DL3MX-L' => 'PI, Alfred, Franken',
     'YO4PEA-P' => 'NOD, Adrian, Galați',
     'YO5D' => 'Repetor, Heniu, Prundul Birgaului',
     'YO6OEK-P' => 'NOD, Kalman, M-Ciuc',

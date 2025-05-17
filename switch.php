@@ -17,8 +17,6 @@
     html, body {
       width: 800px;
       height: 480px;
-      margin: 0;
-      padding: 0;
       background-color: #121212;
       overflow: hidden;
       font-family: 'Roboto', sans-serif;
@@ -64,16 +62,22 @@
     }
 
     .feedback {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 84px;
+      position: fixed;
+      width: 800px;
+      height: 480px;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
       padding: 16px 32px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(109, 106, 106, 0.6);
       background-color: rgb(0, 0, 0);
       text-align: center;
+      color: #fff;
+      word-wrap: break-word;
     }
 
     .feedback.success {
@@ -90,77 +94,81 @@
   </style>
 </head>
 <body>
+  <?php
+  include_once __DIR__ . '/include/get_fmnet.php';
+  $fmnet = getFMNetName();
+  $feedback = '';
+  $feedbackClass = 'success';
 
-<?php
-include_once __DIR__ . '/include/get_fmnet.php';
-$fmnet = getFMNetName(); // Gibt Wert zurück und speichert ihn in fmnet.txt
-$feedback = '';
-$feedbackClass = 'success';
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (isset($_POST['licht_an'])) {
+          shell_exec('sudo /home/pi/pkill-pi.sh');
+          $feedback = "Chromium on DSI reset";
+          $feedbackClass = 'error';
+      } elseif (isset($_POST['Reflector_1'])) {
+          shell_exec('sudo /home/pi/reflector1.sh');
+          $fmnet = getFMNetName();
+          $feedback = "switch to 1 $fmnet";
+      } elseif (isset($_POST['Reflector_2'])) {
+          shell_exec('sudo /home/pi/reflector2.sh');
+          $fmnet = getFMNetName();
+          $feedback = "switch to 2 $fmnet";
+      } elseif (isset($_POST['Reflector_3'])) {
+          shell_exec('sudo /home/pi/reflector3.sh');
+          $fmnet = getFMNetName();          
+          $feedback = "switch to 3 $fmnet";
+      } elseif (isset($_POST['Reflector_4'])) {
+          shell_exec('sudo /home/pi/reflector4.sh');
+          $fmnet = getFMNetName();
+          $feedback = "switch to 4 $fmnet";
+      } elseif (isset($_POST['Reflector_5'])) {
+          shell_exec('sudo /home/pi/reflector5.sh');
+          $fmnet = getFMNetName();
+          $feedback = "switch to 5 $fmnet";
+      }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['licht_an'])) {
-        shell_exec('sudo /home/pi/pkill-pi.sh');
-        $feedback = "Chromium reset [$fmnet]";
-        $feedbackClass = 'error';
-    } elseif (isset($_POST['Reflector_1'])) {
-        shell_exec('sudo /home/pi/reflector1.sh');
-        $feedback = "switch to $fmnet";
-    } elseif (isset($_POST['Reflector_2'])) {
-        shell_exec('sudo /home/pi/reflector2.sh');
-        $feedback = "switch to $fmnet";
-    } elseif (isset($_POST['Reflector_3'])) {
-        shell_exec('sudo /home/pi/reflector3.sh');
-        $feedback = "switch to $fmnet";
-    } elseif (isset($_POST['Reflector_4'])) {
-        shell_exec('sudo /home/pi/reflector4.sh');
-        $feedback = "switch to $fmnet";
-    } elseif (isset($_POST['Reflector_5'])) {
-        shell_exec('sudo /home/pi/reflector5.sh');
-        $feedback = "switch to $fmnet";
-    }
+      if ($feedback !== '') {
+          echo '<div class="feedback ' . $feedbackClass . '">' . htmlspecialchars($feedback) . '</div>';
+          echo '<script>
+            window.addEventListener("DOMContentLoaded", () => {
+              document.querySelector(".grid").classList.add("hidden");
+              setTimeout(() => {
+                window.location.href = "index.php";
+              }, 3000);
+            });
+          </script>';
+          $fmnet = '';
+      }
+  }
+  ?>
 
-    if ($feedback !== '') {
-        echo '<div class="feedback ' . $feedbackClass . '">' . htmlspecialchars($feedback) . '</div>';
-        echo '<script>
-          window.addEventListener("DOMContentLoaded", () => {
-            document.querySelector(".grid").classList.add("hidden");
-            setTimeout(() => {
-              window.location.href = "index.php";
-            }, 3000);
-          });
-        </script>';
-        $fmnet = ''; // Reset der Variable nach Anzeige
-    }
-}
-?>
-
-<form method="post">
-  <main class="grid">
-    <button class="tile" type="submit" name="licht_an">
-      <i class="material-icons-outlined">sync</i>
-      Chromium reset
-    </button>
-    <button class="tile" type="submit" name="Reflector_1">
-      <i class="material-icons-outlined">settings</i>
-      Reflector 1
-    </button>
-    <button class="tile" type="submit" name="Reflector_2">
-      <i class="material-icons-outlined">settings</i>
-      Reflector 2
-    </button>
-    <button class="tile" type="submit" name="Reflector_3">
-      <i class="material-icons-outlined">settings</i>
-      Reflector 3
-    </button>
-    <button class="tile" type="submit" name="Reflector_4">
-      <i class="material-icons-outlined">settings</i>
-      Reflector 4
-    </button>
-    <button class="tile" type="submit" name="Reflector_5">
-      <i class="material-icons-outlined">sync</i>
-      Reflector 5
-    </button>
-  </main>
-</form>
+  <form method="post">
+    <main class="grid">
+      <button class="tile" type="submit" name="licht_an">
+        <i class="material-icons-outlined">sync</i>
+        Chromium reset
+      </button>
+      <button class="tile" type="submit" name="Reflector_1">
+        <i class="material-icons-outlined">settings</i>
+        Reflector 1
+      </button>
+      <button class="tile" type="submit" name="Reflector_2">
+        <i class="material-icons-outlined">settings</i>
+        Reflector 2
+      </button>
+      <button class="tile" type="submit" name="Reflector_3">
+        <i class="material-icons-outlined">settings</i>
+        Reflector 3
+      </button>
+      <button class="tile" type="submit" name="Reflector_4">
+        <i class="material-icons-outlined">settings</i>
+        Reflector 4
+      </button>
+      <button class="tile" type="submit" name="Reflector_5">
+        <i class="material-icons-outlined">sync</i>
+        Reflector 5
+      </button>
+    </main>
+  </form>
 </body>
 </html>

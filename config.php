@@ -79,7 +79,7 @@
 
     .back-button-container {
       position: absolute;
-      bottom: 10px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       width: 280px;

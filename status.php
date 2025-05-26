@@ -41,7 +41,13 @@ include_once 'include/tools.php';
 ?>
 <p style="margin-top:30px;margin-bottom:0px;"></p>
 <a href="index.php">
-  <button class="white" style="height: 65px; width: 230px; font-size:16px;" name="button0">BACK</button>
+  <!-- <button class="white" style="height: 65px; width: 230px; font-size:16px;" name="button0">BACK</button> -->
+       <div class="back-button-container">
+      <?php
+      $backTarget = 'index.php';
+      include_once 'include/back_button.php'; 
+      ?>
+    </div>
 </a>
 </center>
 </body>

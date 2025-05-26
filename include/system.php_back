@@ -1,7 +1,20 @@
 <?php
-// Konfiguration
-$version = "v0.0.7";
+// Konfiguration 2025-05-21 15:28:43
+$dsi_version = "v0.1.1";
 define('ALLOW_LOGIC_CHANGES', false);
+
+// SvxLink-Version aus Logdatei extrahieren
+$logFilePath = '/var/log/svxlink';
+$svxVersion = 'n/a';
+if (is_readable($logFilePath)) {
+    $lines = file($logFilePath);
+    foreach ($lines as $line) {
+        if (preg_match('/SvxLink\s+v([\d\.@]+)/', $line, $match)) {
+            $svxVersion = $match[1];
+            break;
+        }
+    }
+}
 
 // Status: SvxLink aktiv?
 $svxlinkActive = trim(shell_exec('systemctl is-active svxlink')) === 'active';
@@ -31,7 +44,9 @@ function getCpuUsage() {
     return $delta > 0 ? round(100 * (($delta - ($idle2 - $idle1)) / $delta)) : 0;
 }
 $cpu = getCpuUsage();
-$cpuUsageHTML = "<td style=\"background: " . ($cpu >= 80 ? "#f00" : ($cpu >= 50 ? "#fa0" : "#1d1")) . "\">" . $cpu . "%</td>\n";
+// $cpuUsageHTML = "<td style=\"background: " . ($cpu >= 80 ? "#f00" : ($cpu >= 50 ? "#fa0" : "#1d1")) . "\">" . $cpu . "%</td>\n";
+$cpuUsageHTML = "<td style=\"background: " . ($cpu >= 80 ? "#f00" : ($cpu >= 50 ? "#fa0" : "#1d1")) . "; font-size: 18px;\">" . $cpu . "%</td>\n";
+
 
 // WLAN-Signalstärke abrufen
 function getSignalLevel($interface = 'wlan0') {
@@ -64,7 +79,7 @@ if ($signal === null) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <title>SvxDSI </title>
+  <title>SvxDSI</title>
   <style>
     body {
       max-width: 790px;
@@ -88,7 +103,7 @@ if ($signal === null) {
       width: 5px;
       margin-right: 2px;
       background: black;
-      border-radius: 2px;
+      #border-radius: 2px;
     }
     .bar.active {
       background: white;
@@ -116,7 +131,7 @@ if ($signal === null) {
 <body>
   <table style="margin-top:0;">
     <tr>
-      <th style="width: 22%; background: blue;">
+      <th style="width: 20%; background: blue;">
         <div style="display: flex; align-items: center;">
           <div class="signal">
             <?php
@@ -133,15 +148,16 @@ if ($signal === null) {
           <span class="ip"><?= str_replace(' ', '<br>', $ip) ?></span>
         </div>
       </th>
-      <th colspan="2" style="width: 250px; background: red;">
-        <span style="font-weight: bold; color: white;">SvxDSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span style="color: white; font-size: 10px;">by dk1aj from M0IQF · <?= $version ?></span>
+      <th colspan="2" style="width: 1%; background: red;">
+        <span style="font-size: 10px; color: white;">
+          <span style="color: white; font-weight: bold;">&nbsp;&nbsp;SvxDSI</span> by dk1aj from M0IQF · <?= $dsi_version ?> · SvxLink <?= $svxVersion ?>
+        </span>
         <?php
           $svxText = $svxlinkActive ? 'ACTIVE' : 'INACTIVE';
-          $svxColor = $svxlinkActive ? 'white' : 'black';
+          $svxColor = $svxlinkActive ? 'white' : 'cyan';
           $svxClass = $svxlinkActive ? '' : 'blinking';
         ?>
-        SvxLink: <span class="<?= $svxClass ?>" style="color: <?= $svxColor ?>;">&nbsp;<?= $svxText ?>&nbsp;</span>
+        &nbsp;&nbsp;&nbsp;Svx:<span class="<?= $svxClass ?>" style="color: <?= $svxColor ?>;"> <?= $svxText ?>&nbsp;</span>
       </th>
       <?= $cpuTempHTML ?>
       <?= $cpuUsageHTML ?>

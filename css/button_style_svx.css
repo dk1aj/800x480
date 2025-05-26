@@ -28,43 +28,53 @@
    
    /* Zehn Farbvarianten */
    .touch-button1 {
-    background: linear-gradient(to bottom, #ff5f6d, #ffc371); /* Rot -> Gelb */
+    /* background: linear-gradient(to bottom, #ff5f6d, #ffc371); Rot -> Gelb */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button2 {
-    background: linear-gradient(to bottom, #36d1dc, #5b86e5); /* Türkis -> Blau */
+    /* background: linear-gradient(to bottom, #36d1dc, #5b86e5); /* Türkis -> Blau */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button3 {
-    background: linear-gradient(to bottom, #f7971e, #ffd200); /* Orange -> Gelb */
+    /* background: linear-gradient(to bottom, #f7971e, #ffd200); /* Orange -> Gelb */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button4 {
-    background: linear-gradient(to bottom, #00c9ff, #92fe9d); /* Blau -> Grün */
+    /*background: linear-gradient(to bottom, #00c9ff, #92fe9d); Blau -> Grün */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button5 {
-    background: linear-gradient(to bottom, #c471f5, #fa71cd); /* Lila -> Rosa */
+    /*background: linear-gradient(to bottom, #c471f5, #fa71cd); /* Lila -> Rosa */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button6 {
-    background: linear-gradient(to bottom, #43cea2, #185a9d); /* Grün -> Blau */
+    /* background: linear-gradient(to bottom, #43cea2, #185a9d); /* Grün -> Blau */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button7 {
-    background: linear-gradient(to bottom, #f953c6, #b91d73); /* Pink -> Dunkelrosa */
+    /* background: linear-gradient(to bottom, #f953c6, #b91d73); /* Pink -> Dunkelrosa */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button8 {
-    background: linear-gradient(to bottom, #00b09b, #96c93d); /* Türkis -> Limette */
+    /* background: linear-gradient(to bottom, #00b09b, #96c93d); /* Türkis -> Limette */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button9 {
-    background: linear-gradient(to bottom, #ff9966, #ff5e62); /* Orange -> Rot */
+    /*background: linear-gradient(to bottom, #ff9966, #ff5e62); /* Orange -> Rot */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    
    .touch-button10 {
-    background: linear-gradient(to bottom, #7f00ff, #e100ff); /* Violett -> Pink */
+    /*background: linear-gradient(to bottom, #7f00ff, #e100ff); /* Violett -> Pink */
+    background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
    }
    .button-wide {
     width: 450px;
@@ -79,8 +89,7 @@
         min-height: 200px;
         padding: 40px;
     }
-        
-       
+               
        .centered-button {
         width: 450px;
         height: 50px;

@@ -2,81 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUQs6Q0z6f13Qa9+v5XLuKDxloAg8CVy6GDaMZB2RT0rRQzFz3+/WzazHlXK7RzW4QDE9J/cd1w8uUg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       font-family: sans-serif;
+      background-color: #111;
+      color: #fff;
     }
 
     .button-row {
       display: flex;
-      gap: 6px; /* Abstand zwischen Buttons */
+      justify-content: space-between;
+      padding: 12px 6px;
+      box-sizing: border-box;
     }
 
-    .purple, .red, .blue, .green, .yellow {
-      height: 65px;
-      width: 180px;
-      font-size: 36px;
+    .button-row a {
+      flex: 1;
+      min-width: 160px;
+      max-width: 160px;
+      height: 60px;
+      font-size: 24px;
       font-weight: bold;
+      font-family: inherit;
+      line-height: 1;
+      text-align: center;
+      user-select: none;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       transition: transform 0.1s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      margin: 0 6px;
+      text-decoration: none;
+      color: #000;
+      padding: 0;
     }
 
-    .purple {
-      background: linear-gradient(to bottom,rgb(205, 202, 252),rgb(94, 75, 240));
-      color: black;
-    }
-
-    .red {
-      background: linear-gradient(to bottom,rgb(252, 233, 233),rgb(255, 0, 0));
-      color: black;
-    }
-
-    .blue {
-      background: linear-gradient(to bottom,rgb(240, 240, 240),rgb(2, 168, 146));
-      color: black;
-    }
-
-    .green {
-      background: linear-gradient(to bottom,rgb(255, 255, 255),rgb(0, 255, 34));
-      color: black;
-    }
-
-    .yellow {
-      background: linear-gradient(to bottom,rgb(251, 255, 0),rgb(245, 78, 0));
-      color: black;
-    }
-
-    .purple:hover, .red:hover, .blue:hover, .green:hover, .yellow:hover {
+    .button-row a:hover {
       transform: scale(1.03);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-    a {
-      text-decoration: none;
+    .button-row a:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    .button-row a i {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .blue {
+      background: linear-gradient(to bottom, #e0f7fa,rgb(0, 51, 128));
+    }
+
+    .red {
+      background: linear-gradient(to bottom, #fce9e9, #cc0000);
+    }
+
+    .yellow {
+      background: linear-gradient(to bottom, #ffff00, #cc3300);
+    }
+
+    .green {
+      background: linear-gradient(to bottom, #ffffff, #00cc22);
     }
   </style>
 </head>
 <body>
 
-<div class="button-row">
-  <a href="dtmf.php"><button class="blue" name="button0">DTMF</button></a>
-  <!-- <a href="tg.php"><button class="purple" name="button0">MEMO</button></a> -->
-  <a href="switch.php"><button class="red" name="button0">SWITCH</button></a> 
-  <!-- <a href="stream_deck.php"><button class="purple" name="button0">DECK</button></a> -->
-
-  <a href="svx.php"><button class="yellow" name="button0">SvxLink</button></a>
-  <a href="config.php"><button class="green" name="button0">Config</button></a>
-  <!-- Beispiel für neue Farben -->
-  <!-- <a href="#"><button class="blue" name="button0">INFO</button></a> -->
-  <!-- <a href="#"><button class="green" name="button0">START</button></a> -->
-  <!-- <a href="#"><button class="yellow" name="button0">WARN</button></a> -->
-</div>
+  <div class="button-row">
+    <a href="dtmf.php" class="blue"><i class="fas fa-keyboard"></i> DTMF</a>
+    <a href="switch.php" class="red"><i class="fas fa-toggle-on"></i> SWITCH</a>
+    <a href="svx.php" class="yellow"><i class="fas fa-microphone"></i> SvxLink</a>
+    <a href="config.php" class="green"><i class="fas fa-cog"></i> Config</a>
+  </div>
 
 </body>
 </html>

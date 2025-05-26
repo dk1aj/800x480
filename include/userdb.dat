@@ -4,7 +4,6 @@ $userdb_array = [
     'misu1' => 'Computer, Michael, Hornbostel',
     'misu3' => 'LOCAL, DIETPI, LOCAL',
     'DK1AJ' => 'EX, IOJO, Home',
-    'DK1AJ-C' => 'C, Funknetz, Celle',
     'DK1AJ-C' => 'D, Funknetz, Celle',
     'DK1AJ-L' => 'L, FM, Funknetz',
     'DK1AJ-DJ' => 'DJ, FM, Funknetz',
@@ -28,5 +27,6 @@ $userdb_array = [
     'YO7GQZ-P' => 'Portabil, Catalin, Pitesti',
     'YO8ESO' => 'Cutie, SerGhiu, Moldova',
     'CoziaX' => 'Repetor, Repetor , Masivul Cozia ',
+    'TarguJiu' => 'Repetor, Repetor , Targu Jiu',
 ];
 ?>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Letzte Aktivität</title>
+  <meta name="viewport" content="width=800, height=480">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1e293b;
+    }
+    th, td {
+      padding: 8px;
+      font-size: 16px;
+      text-align: left;
+    }
+    th {
+      background: #334155;
+    }
+    tr:nth-child(even) {
+      background: #1e293b;
+    }
+    tr:hover {
+      background: #475569;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .tg-number {
+      color: #f97316;
+      font-weight: bold;
+    }
+    .tg-name {
+      font-weight: bold;
+      color: #94a3b8;
+    }
+    img {
+      vertical-align: middle;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Time (MEZ)</th>
+        <th>Callsign</th>
+        <th>TG #</th>
+        <th>Name TG</th>
+      </tr>
+    </thead>
+    <tbody id="lastheard-content">
+      <tr><td colspan="4">Lade Daten...</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    function reloadLastHeard() {
+      fetch('lastheard.php')
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('lastheard-content').innerHTML = html;
+        });
+    }
+
+    reloadLastHeard(); // erstes Mal laden
+    setInterval(reloadLastHeard, 10000); // alle 10 Sekunden neu
+  </script>
+</body>
+</html>

@@ -4,6 +4,7 @@
 /* (C) 2022 by Heiko, DL1BZ */
 $tgdb_array = [ 
 '2704' => 'FunkTag Kassel 2024',
+'0' => ' ',
 '1' => 'MultiRegio (DL-Repeater exklusiv)',
 '2' => 'No QSO > PSE QSY',
 '7' => 'LausitzLink',

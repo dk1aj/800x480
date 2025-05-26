@@ -9,6 +9,34 @@ include_once __DIR__ . '/functions.php';    // Erweiterte Logikfunktionen
 include_once __DIR__ . '/tgdb.dat';         // Talkgroup-Datenbank (TG-Nummer => Name)
 include_once __DIR__ . '/userdb.dat';       // Benutzerdatenbank (Callsign => Name, QTH, Info)
 
+// Funktion zum Rendern der TG-Buttons
+function renderTgButtons(array $tgmon, $tgselect): void
+{
+    if (!empty($tgmon)) {
+        echo '<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 10px;">';
+
+        foreach ($tgmon as $tg) {
+            $tg = trim($tg);
+            $isActive = ((int)$tg === (int)$tgselect);
+            $color = $isActive ? '#ff4444' : '#ffff00';
+            $bgColor = $isActive ? '#222' : '#444';
+            $fontSize = '36px';
+
+            echo '<form method="post" action="set_tg.php" style="margin: 0;">';
+            echo '<input type="hidden" name="tg" value="' . htmlspecialchars($tg, ENT_QUOTES, 'UTF-8') . '">';
+            echo '<button type="submit" style="min-width: 60px; height: 40px; font-size: ' . $fontSize . '; background-color: ' . $bgColor . '; color: ' . $color . '; border: none; border-radius: 12px;">';
+            echo htmlspecialchars($tg, ENT_QUOTES, 'UTF-8');
+            echo '</button>';
+            echo '</form>';
+        }
+
+        echo '</div>';
+    } else {
+        echo '<span style="color:red; font-size: 48px;">No TG</span>';
+    }
+}
+
+
 // Pfad zur Logdatei und Zeitzone definieren
 $logFilePath = '/var/log/svxlink';
 date_default_timezone_set('Europe/Berlin'); // Deutsche Zeitzone für Zeitdarstellungen
@@ -121,9 +149,9 @@ if ($file) {
             (!empty($userDetails[0]) || !empty($userDetails[1]) || !empty($userDetails[2]))) {
             echo "<div style=\"position: absolute; top: 63%; left: 20%; transform: translate(-50%, -50%);\">";
             echo "<div style=\"font-size: 20px; line-height: 1.6; text-align: left; color: white;\">";
-            echo "<div style=\"margin-bottom: 10px;\">Name: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[1])) . "</span></div>";
-            echo "<div style=\"margin-bottom: 10px;\">QTH: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[2])) . "</span></div>";
-            echo "<div>Info: <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[0])) . "</span></div>";
+            echo "<div style=\"margin-bottom: -10px;\">Name:&nbsp; <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[1])) . "</span></div>";
+            echo "<div style=\"margin-bottom: -10px;\">QTH:&nbsp;&nbsp;&nbsp; <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[2])) . "</span></div>";
+            echo "<div>Info:&nbsp;&nbsp;&nbsp;&nbsp; <span style=\"color: cyan;\">" . htmlspecialchars(trim($userDetails[0])) . "</span></div>";
             echo "</div></div>";
         } else {
             // Fallback, wenn Benutzer unbekannt ist
@@ -137,42 +165,23 @@ if ($file) {
         if ($tgselect === "0") {
             $tgselect = "";
         }
-
-        if (!empty($tgmon)) {
-            echo '<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 10px;">';
-            foreach ($tgmon as $tg) {
-                $tg = trim($tg);
-                $isActive = ((int)$tg === (int)$tgselect);
-                $color = $isActive ? '#ff4444' : '#ffff00';
-                $bgColor = $isActive ? '#222' : '#444';
-                $fontSize = '36px';
-        
-                echo '<form method="post" action="set_tg.php" style="margin: 0;">';
-                echo '<input type="hidden" name="tg" value="' . htmlspecialchars($tg) . '">';
-                echo '<button type="submit" style="min-width: 60px; height: 40px; font-size: ' . $fontSize . '; background-color: ' . $bgColor . '; color: ' . $color . '; border: none; border-radius: 12px;">';
-                echo htmlspecialchars($tg);
-                echo '</button>';
-                echo '</form>';
-            }
-            echo '</div>';
-        } else {
-            echo "<span style=\"color:red; font-size: 48px;\">No TG</span>";
-        }
             
         // Anzeige von Zeit, zuletzt ausgewählter TG und Netz
-        if (!empty($tgselect)) {
-            $tgname = $tgdb_array[$tgselect] ?? 'NoNameTG';
-            $currentTime = date('H:i:s');
+        if (!empty($tgselect)) {            
 
-            // Einstellbare Fontgrößen
-            $fontSizeTGName = '48px'; // z. B. aus Config
-            $fontSizeNet = '38px';    // z. B. aus Config
-            $fontSizeTGNR = '38px';    // z. B. aus Config
-            $fontSizeFMNET = '48px';    // z. B. aus Config
+            $tgname = $tgdb_array[$tgselect] ?? 'NoNameTG';
+            $currentTime = date('l, H:i:s');
+
+            $fontSizeTGName = '48px';
+            $fontSizeNet = '38px';
+            $fontSizeTGNR = '38px';
+            $fontSizeFMNET = '48px';
 
             $nameFontSize = (strlen($tgname) > 16) ? '36px' : $fontSizeTGName;
 
-            echo '<div style="color: white; font-size: 50px;">' . $currentTime . "</div>\n";
+            echo '<div style="width: 800px; text-align: center; color: white;">';
+
+            echo '<div style="font-size: 50px;">' . $currentTime . '</div>';
 
             echo '<div style="white-space: nowrap;">';
             echo '<span style="color: green; font-size: 48px;">Last Talker: ' . htmlspecialchars($lastKnownCallsign) . '</span><br />';
@@ -180,34 +189,53 @@ if ($file) {
 
             echo '<span style="color: blue; font-size: ' . $fontSizeTGNR . ';">Active TG# ' . htmlspecialchars($tgselect) . '</span>&nbsp;&nbsp;&nbsp;';
             echo '<span style="color: white; font-size: ' . $fontSizeNet . ';">' . htmlspecialchars($tgname) . '</span><br />';
-            echo '<span style="color: cyan; font-size: ' . $fontSizeFMNET . ';">' . htmlspecialchars($fmnet) . '</span>';
-        } else {
+            echo '<div style="color: cyan; font-size: ' . $fontSizeFMNET . ';">' . htmlspecialchars($fmnet) . '</div>';
+
+            echo '</div>';
+
+            // // Zusätzliche Anzeige oder Logik einbinden
+            
+        }
+        else 
+        {
+                
+            // Funktion zum Rendern der TG-Buttons
+            renderTgButtons($tgmon, $tgselect);
+                        
             // Nur Uhrzeit und Netzname anzeigen
-            $currentTime = date('H:i:s');
-        
-            // Einstellbare Fontgrößen (z. B. aus Config)
-            $fontSizeNet   = '100px';
-            $fontSizeClock = '100px';
-        
+                $currentTime = date('H:i:s');
+
+                // Einstellbare Fontgrößen
+                $fontSizeClock = '100px';
+                $fontSizeNet   = '100px';
+
+            // Position: Uhrzeit (z. B. oben mittig)
             echo '<div style="
-                color: white;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translateX(-50%);
                 font-size: ' . $fontSizeClock . ';
-                line-height: ' . $fontSizeClock . ';
+                line-height: 1;
                 margin: 0;
+                color: white;
                 text-align: center;
             ">' . $currentTime . '</div>';
-        
-            echo '<span style="
-                color: cyan;
-                font-size: ' . $fontSizeNet . ';
-                line-height: ' . $fontSizeNet . ';
-                margin: 0;
-                display: block;
-                text-align: center;
-            ">' . htmlspecialchars($fmnet) . '</span>';
-        }
-        
 
+            // Position: Netzname (z. B. unten mittig)
+            echo '<div style="
+                position: absolute;
+                bottom: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: ' . $fontSizeNet . ';
+                color: cyan;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 780px;
+            ">' . htmlspecialchars($fmnet) . '</div>';
+        }
     }
 } else {
     // Fehler beim Öffnen der Logdatei

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     file_put_contents("/tmp/dtmf_svx", $dtmf);
     $activeButton = $btnNum;
     $activeKeyLabel = constant($const)[0];
-    header("Refresh:2"); // Zurück zur Übersicht nach 2 Sekunden
+    header("Refresh:1"); // Zurück zur Übersicht nach 2 Sekunden
     break;
    }
   }

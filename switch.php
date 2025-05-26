@@ -29,36 +29,37 @@
       padding: 20px;
     }
 
-    .tile {
-      background-color: #1f1f1f;
-      border: none;
-      border-radius: 16px;
-      font-size: 19px;
-      padding: 15px;
-      height: 114px;
-      color: #f1f1f1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      transition: transform 0.1s ease-in-out, background-color 0.3s;
-      touch-action: manipulation;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-    }
+   .tile {
+  background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
+  border: none;
+  border-radius: 16px;
+  font-size: 19px;
+  padding: 15px;
+  height: 114px;
+  color: #f1f1f1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.1s ease-in-out, background 0.3s;
+  touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.tile:hover {
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+}
+
+.tile:active {
+  transform: scale(0.97);
+  background: linear-gradient(145deg, #444, #2b2b2b);
+}
+
 
     .tile i {
       font-size: 30px;
       margin-bottom: 6px;
-    }
-
-    .tile:hover {
-      background-color: #2a2a2a;
-    }
-
-    .tile:active {
-      transform: scale(0.97);
-      background-color: #333;
     }
 
     .feedback {

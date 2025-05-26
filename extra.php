@@ -102,12 +102,12 @@ define('ALLOW_LOGIC_CHANGES', false);
 
     .back-button-container {
       position: absolute;
-      bottom: 10px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
+      bottom: 100px;
+      /* left: 0; */
+      /* width: 100%; */
+      /* display: flex; */
+      /* justify-content: center; */
+      /* z-index: 1000; */
     }
   </style>
 </head>

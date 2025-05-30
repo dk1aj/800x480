@@ -1,5 +1,5 @@
 <?php
-// 2025-05-07 08:37:31 Sicherheitskonstante setzen, um Logikänderungen zu unterbinden
+// 2025-05-30 09:25:54 Sicherheitskonstante setzen, um Logikänderungen zu unterbinden
 define('ALLOW_LOGIC_CHANGES', false);
 
 // Notwendige Konfigurations- und Datenquellen einbinden
@@ -37,7 +37,7 @@ function renderTgButtons(array $tgmon, $tgselect): void
 }
 
 
-// Pfad zur Logdatei und Zeitzone definieren
+// Pfad zur SVX-Logdatei und Zeitzone definieren
 $logFilePath = '/var/log/svxlink';
 date_default_timezone_set('Europe/Berlin'); // Deutsche Zeitzone für Zeitdarstellungen
 
@@ -50,7 +50,10 @@ $receiving = false;          // Empfangszustand
 $lastKnownCallsign = null;   // Letzter bekannter Nutzer für Anzeige
 $cssClass = 'node-talk';    // Default-CSS-Klasse für Anzeigeelemente
 
-// Logdatei öffnen
+// Liste der letzten 5 Callsigns vorbereiten
+$lastCallsignHistory = [];
+
+// SVX-Logdatei öffnen
 $file = fopen($logFilePath, 'r');
 if ($file) {
     $lines = [];
@@ -74,6 +77,8 @@ if ($file) {
             $lastTGNumber = $matches[1];
             $lastCallsign = $matches[2];
             $lastKnownCallsign = $lastCallsign;
+            // in die liste schreiben 
+            $lastCallsignHistory[] = $lastCallsign;
         }
 
         // Talker beendet Sprechen
@@ -108,6 +113,10 @@ if ($file) {
             $transmitting = false;
         }
     }
+
+// Nur die letzten 5 eindeutigen Callsigns merken
+    $lastCallsignHistory = array_unique(array_reverse($lastCallsignHistory));
+    $lastCallsignHistory = array_slice($lastCallsignHistory, 0, 5);
 
     // Konfigurationsdatei für SVXLink laden
     $svxConfigFile = '/etc/svxlink/svxlink.conf';
@@ -170,7 +179,9 @@ if ($file) {
         if (!empty($tgselect)) {            
 
             $tgname = $tgdb_array[$tgselect] ?? 'NoNameTG';
-            $currentTime = date('l, H:i:s');
+            // $currentTime = date('l, H:i:s');
+            setlocale(LC_TIME, 'de_DE.UTF-8');
+            $currentTime = strftime('%A, %H:%M:%S');
 
             $fontSizeTGName = '48px';
             $fontSizeNet = '38px';
@@ -183,29 +194,40 @@ if ($file) {
 
             echo '<div style="font-size: 50px;">' . $currentTime . '</div>';
 
-            echo '<div style="white-space: nowrap;">';
-            echo '<span style="color: green; font-size: 48px;">Last Talker: ' . htmlspecialchars($lastKnownCallsign) . '</span><br />';
-            echo '</div>';
+            // echo '<div style="white-space: nowrap;">';
+            // echo '<span style="color: green; font-size: 48px;">Last Talker: ' . htmlspecialchars($lastKnownCallsign) . '</span><br />';
+            // echo '</div>';
 
-            echo '<span style="color: blue; font-size: ' . $fontSizeTGNR . ';">Active TG# ' . htmlspecialchars($tgselect) . '</span>&nbsp;&nbsp;&nbsp;';
-            echo '<span style="color: white; font-size: ' . $fontSizeNet . ';">' . htmlspecialchars($tgname) . '</span><br />';
-            echo '<div style="color: cyan; font-size: ' . $fontSizeFMNET . ';">' . htmlspecialchars($fmnet) . '</div>';
+            // echo '<span style="color: blue; font-size: ' . $fontSizeTGNR . ';">Active TG# ' . htmlspecialchars($tgselect) . '</span>&nbsp;&nbsp;&nbsp;';
+            // echo '<span style="color: white; font-size: ' . $fontSizeNet . ';">' . htmlspecialchars($tgname) . '</span><br />';
+            // echo '<div style="color: cyan; font-size: ' . $fontSizeFMNET . ';">' . htmlspecialchars($fmnet) . '</div>';
 
             echo '</div>';
 
             // // Zusätzliche Anzeige oder Logik einbinden
+// -- Ausgabe der letzten 5 Callsigns --
+            echo '<div id="callsign-history" style="color: #ccc; font-size: 36px; position: absolute; text-align: center;">';
+            echo ' <br />';
+            foreach ($lastCallsignHistory as $cs) 
+            {
+                echo htmlspecialchars($cs) . '<br />';
+            }
+            echo '</div>';
+            // -- Ende --
+
+            // -- Optional: Position steuerbar per JavaScript oder CSS-Klasse --
+            echo '<style>#callsign-history { bottom: 160px; center: 20px; }</style>';
+
             
         }
         else 
         {
-                
             // Funktion zum Rendern der TG-Buttons
             renderTgButtons($tgmon, $tgselect);
                         
             // Nur Uhrzeit und Netzname anzeigen
                 $currentTime = date('H:i:s');
-
-                // Einstellbare Fontgrößen
+            // Einstellbare Fontgrößen
                 $fontSizeClock = '100px';
                 $fontSizeNet   = '100px';
 
@@ -238,7 +260,7 @@ if ($file) {
         }
     }
 } else {
-    // Fehler beim Öffnen der Logdatei
+    // Fehler beim Öffnen der SVX-Logdatei
     echo "Error opening log file.\n";
 }
 ?>

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+<!--  -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="refresh" content="5;url=index.php">
+
   <?php
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -45,6 +48,7 @@
         // Konfiguration der Reflektor-Aktionen
         // Key ist der POST-Parameter (Name des Buttons)
         $reflectorActionsConfig = [
+            'Reflector_6' => ['script' => 'reflector6.sh', 'number' => '6', 'log_msg_action' => 'Aktion: Reflector_6'],
             'Reflector_1' => ['script' => 'reflector1.sh', 'number' => '1', 'log_msg_action' => 'Aktion: Reflector_1'],
             'Reflector_2' => ['script' => 'reflector2.sh', 'number' => '2', 'log_msg_action' => 'Aktion: Reflector_2'],
             'Reflector_3' => ['script' => 'reflector3.sh', 'number' => '3', 'log_msg_action' => 'Aktion: Reflector_3'],
@@ -62,50 +66,32 @@
         }
 
         if ($pressedButtonName === 'licht_an') {
-            // script_log("Aktion: licht_an");
-            $actionTaken = true;
-            $command = 'sudo /home/pi/pkill-pi.sh 2>&1';
-            // script_log("Führe aus: " . $command);
-            $output = shell_exec($command);
-            $trimmedOutput = trim($output);
-            // script_log("Output von pkill-pi.sh: " . $trimmedOutput);
-            $feedback = "Chromium on DSI reset" . (!empty($trimmedOutput) ? ". Output: " . htmlspecialchars($trimmedOutput) : "");
-            $feedbackClass = 'error';
-            $contentForReflectorFile = "RESET";
-        } elseif ($pressedButtonName && isset($reflectorActionsConfig[$pressedButtonName])) {
+            ;
+        } elseif ($pressedButtonName && isset($reflectorActionsConfig[$pressedButtonName])) 
+        {
             $config = $reflectorActionsConfig[$pressedButtonName];
-            // script_log($config['log_msg_action']);
             $actionTaken = true;
             $command = 'sudo /home/pi/' . $config['script'] . ' 2>&1';
-            // script_log("Führe aus: " . $command);
             $output = shell_exec($command);
-            // script_log("Output von " . $config['script'] . ": " . trim($output));
 
             if (function_exists('getFMNetName')) { // FMNet nach Umschaltung neu abrufen
                 $fmnet = getFMNetName();
-                // script_log("FMNet nach Umschaltung neu abgerufen: " . $fmnet);
             }
 
             $feedback = "switch to " . $config['number'] . " " . $fmnet;
             $contentForReflectorFile = $config['number'];
-            // $feedbackClass ist standardmäßig 'success'
-        } elseif (!empty($_POST)) { // Fall für unbekannte Aktionen, wenn POST nicht leer ist
-            // script_log("WARNUNG: Unbekannte POST-Aktion. POST: " . print_r($_POST, true));
+        } elseif (!empty($_POST)) 
+        { // Fall für unbekannte Aktionen, wenn POST nicht leer ist
             $feedback = "Unbekannte POST-Aktion empfangen.";
             $feedbackClass = 'error';
             $contentForReflectorFile = "UNKNOWN_ACTION";
         }
 
-
         // Schreiben in letzter_reflektor.txt, wenn ein Inhalt dafür vorgesehen ist
         if ($contentForReflectorFile !== "") {
-            // script_log("Versuche in Datei '$reflectorFile' zu schreiben: '$contentForReflectorFile'");
             if (file_put_contents($reflectorFile, $contentForReflectorFile . PHP_EOL, LOCK_EX) === false) {
                 $errorDetails = error_get_last();
                 $fileWriteError = $errorDetails ? $errorDetails['message'] : 'Unbekannter Fehler';
-                // script_log("FEHLER beim Schreiben in Datei '$reflectorFile': " . $fileWriteError);
-            } else {
-                // script_log("Erfolgreich in Datei '$reflectorFile' geschrieben.");
             }
         }
     } // end if POST
@@ -119,66 +105,49 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      width: 800px;
-      height: 480px;
-      background-color: #121212;
-      overflow: hidden;
-      font-family: 'Roboto', sans-serif;
+      width: 800px; height: 480px; background-color: #121212;
+      overflow: hidden; font-family: 'Roboto', sans-serif;
     }
     .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 20px;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 15px; padding: 20px;
     }
-   .tile {
+    .tile {
       background: linear-gradient(145deg,rgb(122, 121, 121), #1a1a1a);
-      border: none;
-      border-radius: 16px;
-      font-size: 19px;
-      padding: 15px;
-      height: 114px;
-      color: #f1f1f1;
+      border: none; border-radius: 16px;
+      font-size: 36px; /* vorher 19px */
+      padding: 15px; height: 114px; color: #f1f1f1;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       transition: transform 0.1s ease-in-out, background 0.3s;
       touch-action: manipulation;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
       user-select: none;
     }
     .tile:hover { background: linear-gradient(145deg, #3a3a3a, #2a2a2a); }
     .tile:active { transform: scale(0.97); background: linear-gradient(145deg, #444, #2b2b2b); }
-    .tile i { font-size: 30px; margin-bottom: 6px; }
+    .tile i { font-size: 34px; margin-bottom: 6px; } /* vorher 30px */
+
     .feedback {
-      position: fixed;
-      width: 800px;
-      height: 480px;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 42px;
-      padding: 20px;
-      border-radius: 12px;
+      position: fixed; width: 800px; height: 480px; top: 0; left: 0;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 42px; padding: 20px; border-radius: 12px;
       box-shadow: 0 4px 12px rgba(109, 106, 106, 0.6);
-      background-color: rgb(0, 0, 0);
-      text-align: center;
-      color: #fff;
-      word-wrap: break-word;
-      z-index: 1000;
+      background-color: rgb(0, 0, 0); text-align: center; color: #fff;
+      word-wrap: break-word; z-index: 1000;
     }
     .feedback.success { color: rgb(168, 175, 76); }
     .feedback.error { color: #f44336; }
     .hidden { display: none !important; }
+
+    /* Farben wie zuvor */
+    .tetra{background:linear-gradient(145deg,#1e88e5,#1565c0)!important;color:#fff;}
+    .kremlink{background:linear-gradient(145deg,#e53935,#b71c1c)!important;color:#fff;}
+    .rolink{background:linear-gradient(145deg,#8e24aa,#6a1b9a)!important;color:#fff;}
+    .fmfunknetz{background:linear-gradient(145deg,#43a047,#2e7d32)!important;color:#fff;}
+    .funknetz-celle{background:linear-gradient(145deg,#f9a825,#f57f17)!important;color:#111;text-shadow:none;}
+    .misu4{background:linear-gradient(145deg,#00acc1,#00838f)!important;color:#fff;}
   </style>
 </head>
 <body>
@@ -186,7 +155,6 @@
   <?php
     // Feedback-Anzeige und JavaScript-Weiterleitung, falls Feedback vorhanden ist
     if (!empty($feedback)) { // Gilt nur wenn ein POST eine Aktion ausgelöst hat
-        // script_log("Feedback wird auf Webseite angezeigt: '$feedback', Klasse: '$feedbackClass'");
         echo '<div class="feedback ' . $feedbackClass . '">' . htmlspecialchars($feedback) . '</div>';
         echo '<script>
           window.addEventListener("DOMContentLoaded", () => {
@@ -197,8 +165,6 @@
           });
         </script>';
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($feedback)) {
-        // Fallback, falls ein POST verarbeitet wurde, aber kein Feedback gesetzt wurde (sollte nicht passieren)
-        // script_log("WARNUNG: POST-Request, aber kein Feedback generiert. POST: " . print_r($_POST, true));
         echo '<div class="feedback error">Aktion verarbeitet, aber kein Feedback generiert.</div>';
         echo '<script>
           window.addEventListener("DOMContentLoaded", () => {
@@ -210,29 +176,34 @@
 
   <form method="post">
     <main class="grid <?php if (!empty($feedback) && $_SERVER['REQUEST_METHOD'] === 'POST') echo 'hidden'; ?>">
-      <button class="tile" type="submit" name="licht_an">
+      <button class="tile tetra" type="submit" name="Reflector_6">
+        <i class="material-icons-outlined">settings</i>
+        Reflector TETRA
+      </button>
+
+      <button class="tile kremlink" type="submit" name="Reflector_1">
+        <i class="material-icons-outlined">settings</i>
+        KREMLINK 
+      </button>
+
+      <button class="tile rolink" type="submit" name="Reflector_2">
+        <i class="material-icons-outlined">settings</i>
+        ROLINK
+      </button>
+
+      <button class="tile fmfunknetz" type="submit" name="Reflector_3">
+        <i class="material-icons-outlined">settings</i>
+        FM FUNKNETZ
+      </button>
+
+      <button class="tile funknetz-celle" type="submit" name="Reflector_4">
+        <i class="material-icons-outlined">settings</i>
+        FUNKNETZ CELLE
+      </button>
+
+      <button class="tile misu4" type="submit" name="Reflector_5">
         <i class="material-icons-outlined">sync</i>
-        Chromium reset
-      </button>
-      <button class="tile" type="submit" name="Reflector_1">
-        <i class="material-icons-outlined">settings</i>
-        Reflector 1
-      </button>
-      <button class="tile" type="submit" name="Reflector_2">
-        <i class="material-icons-outlined">settings</i>
-        Reflector 2
-      </button>
-      <button class="tile" type="submit" name="Reflector_3">
-        <i class="material-icons-outlined">settings</i>
-        Reflector 3
-      </button>
-      <button class="tile" type="submit" name="Reflector_4">
-        <i class="material-icons-outlined">settings</i>
-        Reflector 4
-      </button>
-      <button class="tile" type="submit" name="Reflector_5">
-        <i class="material-icons-outlined">sync</i>
-        Reflector 5
+        MISU 4
       </button>
     </main>
   </form>

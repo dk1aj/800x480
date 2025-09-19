@@ -10,6 +10,6 @@ function getFMNetName(string $configFilePath = '/etc/svxlink/svxlink.conf'): str
         return 'UnknownNet';
     }
 
-    return trim($config['ReflectorLogic']['FMNET']);
+    return trim($config['ReflectorLogic']['FMNET']); 
 }
 ?>

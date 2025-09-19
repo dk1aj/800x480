@@ -1,6 +1,6 @@
 <?php
 // Konfiguration für die DSI-Anzeige (800x400px), Version und Logikumschaltung
-$dsi_version = "v0.1.1";
+$dsi_version = "v0.1.14";
 define('ALLOW_LOGIC_CHANGES', false);
 
 // Auslesen der SvxLink-Version aus der Logdatei, sofern lesbar
@@ -179,7 +179,7 @@ if ($signal === null) {
   <tr>
    <!-- Systemstatusanzeige unten -->
    <td colspan="3" style="width: 100%; background: #333; color: #0f0; font-size: 12px; text-align: left;">
-    &nbsp;&nbsp;System OK ·  SVXLINK <?= $svxlinkActive ? 'läuft' : 'steht' ?> · CPU <?= $cpu ?>%
+    &nbsp;&nbsp;System OK ·  SVXLINK <?= $svxlinkActive ? 'is running' : 'is stopped!' ?> · Active Modules : >Parrot<
    </td>
   </tr>
  </table>

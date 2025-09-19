@@ -206,10 +206,8 @@ if ($file) {
 
             // // Zusätzliche Anzeige oder Logik einbinden
 // -- Ausgabe der letzten 5 Callsigns --
-            echo '<div id="callsign-history" style="color: white; font-size: 24px; position: absolute; text-align: center;">';
-            // echo '<div id="callsign-history" style="color: white; font-size: 24px;">';
-            // Last Caller
-            echo ' ';
+            echo '<div id="callsign-history" style="color: #ccc; font-size: 26px; position: absolute; text-align: right;">';
+            echo 'Last Caller: ';
             foreach ($lastCallsignHistory as $cs) 
             {
                 // echo htmlspecialchars($cs) . '<br />';
@@ -219,7 +217,7 @@ if ($file) {
             // -- Ende --
 
             // -- Optional: Position steuerbar per JavaScript oder CSS-Klasse --
-            echo '<style>#callsign-history { bottom: 160px; left: 5px; }</style>';
+            echo '<style>#callsign-history { bottom: 160px; center: 20px; }</style>';
 
             
         }

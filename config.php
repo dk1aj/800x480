@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SvxDSI  Config</title>
+  <title>SvxDSIConfig</title>
+  <link rel="shortcut icon" href="images/dk1aj_2_inverted.png" sizes="16x16 32x32" type="image/x-icon">
   <meta name="viewport" content="width=800, height=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="refresh" content="2;url=index.php"> 
+  <meta http-equiv="refresh" content="20;url=index.php"> 
   <style>
     html, body {
       margin: 0;
@@ -158,7 +159,8 @@
     </form>
 
     <div class="nav-container">
-      <div class="nav-button"><a href="reflector.php"><button class="blue">SvxReflector switch</button></a></div>
+      <!-- <div class="nav-button"><a href="reflector.php"><button class="blue">SvxReflector switch</button></a></div> -->
+      <div class="nav-button"><a href="div_links.php"><button class="blue">LINKS OUTSIDE</button></a></div>
       <div class="nav-button"><a href="status.php"><button class="green">Status<br>svxlink</button></a></div>
       <div class="nav-button"><a href="lh.php"><button class="green">Lastheards<br>List</button></a></div>
       <div class="nav-button"><a href="extra.php"><button class="orange">EXTRA<br>SET</button></a></div>
@@ -190,7 +192,7 @@
     if (messageShown) {
       setTimeout(() => {
         window.location.href = "index.php";
-      }, 1000);
+      }, 5000);
     }
   </script>
 </body>

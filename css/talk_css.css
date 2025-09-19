@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #333;
+    color: white;
+    margin: 0;
+    padding: 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.callsign-history-bottom {
+    position: absolute;
+    bottom: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ccc;
+    font-size: 26px;
+    text-align: center;
+    width: 90%;
+    max-width: 780px;
+    z-index: 5;
+    line-height: 1.3;
+}
+.callsign-history {
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ccc;
+    font-size: 26px;
+    text-align: center;
+    width: 90%;
+    max-width: 780px;
+    z-index: 5;
+    line-height: 1.3;
+}
+
+.tg-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+    width: 100%;
+    max-width: 780px;
+    box-sizing: border-box;
+    margin-top: 1px;
+    margin-bottom: 5px;
+}
+
+.tg-button-form { margin: 0; }
+
+.tg-button {
+    min-width: 60px;
+    height: 40px;
+    font-size: 36px;
+    background-color: rgb(112, 112, 112);
+    color: #ffff00;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 40px;
+    box-sizing: border-box;
+}
+
+.tg-button.active { background-color: #222; color: #ff4444; }
+
+.error-message {
+    color: red;
+    font-size: 48px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.status-display-base {
+    display: inline-block;
+    width: 740px;
+    height: 300px;
+    padding: 2px;
+    border-radius: 12px;
+    margin: 3px 5px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    touch-action: manipulation;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.node-talk_tx { border: 10px solid #08a103; background: linear-gradient(to bottom,rgb(0,0,0),rgb(59,59,59)); box-shadow: 0 4px 10px rgba(47,247,74,0.65); }
+.node-talk_rx { border: 10px solid #ff5733; background: linear-gradient(to bottom,rgb(0,0,0),rgb(136,2,2)); box-shadow: 0 4px 10px rgba(255,87,51,0.65); }
+
+.callsign-large { color: white; vertical-align: text-top; font-size: 2.5em; line-height: 1.2; }
+.tg-number-medium { color: yellow; font-size: 1.5em; line-height: 1.2;}
+.tg-name-large-red { color: red; font-size: 2em; line-height: 1.2;}
+
+.on-air-indicator {
+    position: absolute;
+    top: 260px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 5px #fff, 0 0 10px #f00;
+    text-align: center;
+    z-index: 10;
+    padding: 10px 20px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    border: 2px solid #f00;
+
+}
+.on-air_rx-indicator
+{
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 5px #fff, 0 0 10px #f00;
+    text-align: center;
+    z-index: 10;
+    padding: 10px 20px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    border: 1px solid  rgba(11, 233, 78, 0.7);
+
+}
+
+.idle-display-container {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.idle-time { font-size: 50px; margin-bottom: 15px; }
+.idle-info-line { margin-bottom: 10px; }
+.idle-last-talker { color: limegreen; font-size: 38px; }
+.idle-active-tg-number { color: lightblue; font-size: 38px; }
+.idle-active-tg-name { color: white; font-size: 38px; }
+.idle-fm-net { color: cyan; font-size: 48px; margin-top: 10px; }
+
+/* Die dynamische CSS-Variable {$callsignHistoryCSS} kann nicht direkt in eine statische CSS-Datei.
+   Wenn dies benötigt wird, müsste es inline im PHP oder per JavaScript gesetzt werden.
+   Fürs Erste habe ich es hier auskommentiert oder du könntest Standardwerte definieren.
+   Da $callsignHistoryCSS in deinem PHP-Code nicht initialisiert wurde, ist es wahrscheinlich leer.
+*/
+
+.large-clock { font-size: 150px; line-height: 1; color: #8b8b8b; text-align: center; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); width: 100%; z-index: 5; }
+.large-net-name { font-size: 100px; color: cyan; text-align: center; position: absolute; bottom: 90px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 780px; z-index: 5; }

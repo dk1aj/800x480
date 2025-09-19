@@ -46,16 +46,16 @@ define("KEY15", array('No TG','*910#','red'));
 define("KEY30", array('Parrot ON 1#','1#','orange'));
 define("KEY31", array('Parrot OFF ##','##','orange'));
 define("KEY32", array('TG 20','*9120#','orange'));
-define("KEY33", array('PARROT OFF ##','##','purple'));
-define("KEY34", array('IDENT','*#','purple'));
+define("KEY33", array('ECHO ON','##','purple'));
+define("KEY34", array('ECHO OFF','*#','purple'));
 define("KEY35", array('1337','*911337#','purple'));
 define("KEY36", array('1338','*911338#','purple'));
-define("KEY37", array('69','*9169#','purple'));
-define("KEY38", array('Memo21','##','purple'));
+define("KEY37", array('TG226','*91226#','purple'));
+define("KEY38", array('Ident','*#','purple'));
 define("KEY39", array('Unlink TG','*91#','purple'));
 define("KEY41", array('TG 262','*91262#','red'));
 define("KEY42", array('TG 0','910#','red'));
-define("KEY43", array('Disconnect','##','red'));
+define("KEY43", array('Ident','*#','red'));
 
 /////////////////////////////////////////////////   Free Radio Network //////////////////
 define("KEY40", array('Connect','7#','green'));

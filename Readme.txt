@@ -31,6 +31,6 @@ This project is for my personal enjoyment. I will not provide support or assista
 ⚠️ Deutsch:
 Dieses Projekt dient meinem privaten Vergnügen. Ich werde keine Hilfestellung leisten. Jeder ist frei, einen eigenen Fork zu erstellen und nach seinen Wünschen anzupassen.
 
-![Beschreibung](images/png/FMNetz.png)
+[Contribution for this project](images/png/FMNetz.png)
 
 
